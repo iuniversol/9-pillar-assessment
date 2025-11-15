@@ -1,0 +1,2771 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>9 Pillars of Health - Complete 81 Question Assessment</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+        
+        .content {
+            padding: 40px 30px;
+        }
+        
+        .intro {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+        
+        .intro h2 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .intro p {
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        .pillar-section {
+            margin-bottom: 35px;
+            padding: 25px;
+            background: #f8f9fa;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+        
+        .pillar-section:hover {
+            background: #e9ecef;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .pillar-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .pillar-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin-right: 15px;
+        }
+        
+        .pillar-title {
+            flex: 1;
+        }
+        
+        .pillar-title h3 {
+            color: #333;
+            font-size: 1.3em;
+            margin-bottom: 5px;
+        }
+        
+        .pillar-title p {
+            color: #666;
+            font-size: 0.9em;
+        }
+        
+        .question {
+            color: #333;
+            margin-bottom: 15px;
+            font-weight: 500;
+            line-height: 1.5;
+        }
+        
+        .rating-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+        }
+        
+        .rating-labels {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            margin-bottom: 10px;
+            font-size: 0.85em;
+            color: #666;
+        }
+        
+        .rating-buttons {
+            display: flex;
+            gap: 10px;
+            width: 100%;
+        }
+        
+        .rating-btn {
+            flex: 1;
+            padding: 12px;
+            border: 2px solid #dee2e6;
+            background: white;
+            color: #495057;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1em;
+            font-weight: 600;
+        }
+        
+        .rating-btn:hover {
+            background: #f1f3f5;
+            transform: translateY(-2px);
+        }
+        
+        .rating-btn.selected {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-color: #667eea;
+        }
+        
+        .submit-section {
+            text-align: center;
+            margin-top: 40px;
+        }
+        
+        .submit-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.1em;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+        }
+        
+        .results {
+            display: none;
+            padding: 30px;
+            background: #f8f9fa;
+            border-radius: 15px;
+            margin-top: 30px;
+        }
+        
+        .results h2 {
+            color: #333;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .overall-score {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+        }
+        
+        .score-display {
+            font-size: 3em;
+            font-weight: bold;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .score-label {
+            color: #666;
+            margin-top: 10px;
+        }
+        
+        .pillar-result {
+            padding: 15px;
+            margin-bottom: 15px;
+            background: white;
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .pillar-result-name {
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .pillar-result-score {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .score-bar {
+            width: 100px;
+            height: 10px;
+            background: #e9ecef;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        .score-fill {
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transition: width 0.5s ease;
+        }
+        
+        .score-text {
+            font-weight: 600;
+            color: #495057;
+        }
+        
+        .feedback {
+            margin-top: 20px;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+        }
+        
+        .feedback h3 {
+            color: #333;
+            margin-bottom: 15px;
+        }
+        
+        .feedback ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .feedback li {
+            padding: 10px 0;
+            color: #666;
+            line-height: 1.6;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .feedback li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+        }
+    
+        
+        .questions-grid {
+            display: grid;
+            gap: 20px;
+        }
+        
+        .pillar-summary {
+            margin-top: 30px;
+            padding: 20px;
+            background: white;
+            border-radius: 12px;
+            text-align: center;
+            display: none;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .pillar-summary.show {
+            display: block;
+        }
+        
+        .summary-score {
+            font-size: 2.5em;
+            font-weight: bold;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 5px;
+        }
+        
+        .summary-label {
+            color: #666;
+            font-size: 1em;
+        }
+        
+        .summary-status {
+            margin-top: 10px;
+            padding: 8px 16px;
+            border-radius: 20px;
+            display: inline-block;
+            font-size: 0.9em;
+            font-weight: 600;
+        }
+        
+        .status-excellent {
+            background: #d3f9d8;
+            color: #2b8a3e;
+        }
+        
+        .status-good {
+            background: #ffe3b3;
+            color: #e67700;
+        }
+        
+        .status-needs-work {
+            background: #ffe0e0;
+            color: #c92a2a;
+        }
+        
+        .progress-bar {
+            background: rgba(255,255,255,0.3);
+            height: 8px;
+            border-radius: 4px;
+            margin-top: 20px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            background: white;
+            height: 100%;
+            width: 0%;
+            border-radius: 4px;
+            transition: width 0.3s ease;
+        }
+        
+        .progress-text {
+            margin-top: 10px;
+            font-size: 0.9em;
+            color: white;
+        }
+        
+        .insights-section {
+            background: white;
+            border-radius: 15px;
+            padding: 35px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+        
+        .insights-section h3 {
+            color: #333;
+            margin-bottom: 25px;
+            font-size: 1.6em;
+            border-bottom: 2px solid #e9ecef;
+            padding-bottom: 12px;
+        }
+        
+        .insight-category {
+            margin-bottom: 25px;
+        }
+        
+        .insight-category h4 {
+            color: #667eea;
+            margin-bottom: 12px;
+            font-size: 1.2em;
+        }
+        
+        .insight-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .insight-item {
+            padding: 12px 0;
+            color: #495057;
+            line-height: 1.7;
+            padding-left: 35px;
+            position: relative;
+        }
+        
+        .insight-item:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+            font-size: 1.3em;
+        }
+        
+        .save-results-btn {
+            background: #37b24d;
+            color: white;
+            border: none;
+            padding: 14px 30px;
+            font-size: 1em;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+            font-weight: 600;
+        }
+        
+        .save-results-btn:hover {
+            background: #2b8a3e;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>9 Pillars of Health</h1>
+            <p>Complete 81-Question Life Assessment</p>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <div class="progress-text" id="progressText">0 of 81 questions answered</div>
+        </div>
+        
+        <div class="content">
+            <div class="intro">
+                <h2>Welcome to Your Comprehensive Life Assessment</h2>
+                <p>This assessment evaluates <span class="highlight">9 essential pillars</span> of your life through <span class="highlight">81 carefully crafted questions</span> (9 per pillar).</p>
+                <p>Take your time and answer honestly - this is for your personal growth and understanding. Rate each statement on a scale of 1-10, where:</p>
+                <p><strong>1 = Strongly Disagree/Never True</strong> | <strong>10 = Strongly Agree/Always True</strong></p>
+            </div>
+            
+            <form id="assessmentForm">
+
+                <!-- Physical Health -->
+                <div class="pillar-section">
+                    <div class="pillar-header">
+                        <div class="pillar-icon" style="background: #ff6b6b; color: white;">💪</div>
+                        <div class="pillar-title">
+                            <h3>Physical Health</h3>
+                            <p>How well your body functions and maintains its capabilities</p>
+                        </div>
+                    </div>
+                    
+                    <div class="questions-grid">
+                        <div class="question-group" style="border-color: #ff6b6b;">
+                            <p class="question">
+                                <span class="question-number">1</span>
+                                I can move through my daily activities without physical pain or discomfort.
+                            </p>
+                            <div class="rating-labels">
+                                <span>Never true</span>
+                                <span>Always true</span>
+                            </div>
+                            <div class="rating-buttons" data-pillar="physical" data-question="1">
+                                <button type="button" class="rating-btn" data-value="1">1</button>
+                                <button type="button" class="rating-btn" data-value="2">2</button>
+                                <button type="button" class="rating-btn" data-value="3">3</button>
+                                <button type="button" class="rating-btn" data-value="4">4</button>
+                                <button type="button" class="rating-btn" data-value="5">5</button>
+                                <button type="button" class="rating-btn" data-value="6">6</button>
+                                <button type="button" class="rating-btn" data-value="7">7</button>
+                                <button type="button" class="rating-btn" data-value="8">8</button>
+                                <button type="button" class="rating-btn" data-value="9">9</button>
+                                <button type="button" class="rating-btn" data-value="10">10</button>
+                            </div>
+                        </div>
+                        <div class="question-group" style="border-color: #ff6b6b;">
+                            <p class="question">
+                                <span class="question-number">2</span>
+                                I have consistent energy throughout the day without relying on caffeine or stimulants.
+                            </p>
+                            <div class="rating-labels">
+                                <span>Never true</span>
+                                <span>Always true</span>
+                            </div>
+                            <div class="rating-buttons" data-pillar="physical" data-question="2">
+                                <button type="button" class="rating-btn" data-value="1">1</button>
+                                <button type="button" class="rating-btn" data-value="2">2</button>
+                                <button type="button" class="rating-btn" data-value="3">3</button>
+                                <button type="button" class="rating-btn" data-value="4">4</button>
+                                <button type="button" class="rating-btn" data-value="5">5</button>
+                                <button type="button" class="rating-btn" data-value="6">6</button>
+                                <button type="button" class="rating-btn" data-value="7">7</button>
+                                <button type="button" class="rating-btn" data-value="8">8</button>
+                                <button type="button" class="rating-btn" data-value="9">9</button>
+                                <button type="button" class="rating-btn" data-value="10">10</button>
+                            </div>
+                        </div>
+                        <div class="question-group" style="border-color: #ff6b6b;">
+                            <p class="question">
+                                <span class="question-number">3</span>
+                                I can climb stairs, lift objects, and bend down without difficulty or losing my breath.
+                            </p>
+                            <div class="rating-labels">
+                                <span>Never true</span>
+                                <span>Always true</span>
+                            </div>
+                            <div class="rating-buttons" data-pillar="physical" data-question="3">
+                                <button type="button" class="rating-btn" data-value="1">1</button>
+                                <button type="button" class="rating-btn" data-value="2">2</button>
+                                <button type="button" class="rating-btn" data-value="3">3</button>
+                                <button type="button" class="rating-btn" data-value="4">4</button>
+                                <button type="button" class="rating-btn" data-value="5">5</button>
+                                <button type="button" class="rating-btn" data-value="6">6</button>
+                                <button type="button" class="rating-btn" data-value="7">7</button>
+                                <button type="button" class="rating-btn" data-value="8">8</button>
+                                <button type="button" class="rating-btn" data-value="9">9</button>
+                                <button type="button" class="rating-btn" data-value="10">10</button>
+                            </div>
+                        </div>
+                        <div class="question-group" style="border-color: #ff6b6b;">
+                            <p class="question">
+                                <span class="question-number">4</span>
+                                I eat nutritious foods that make my body feel good and strong.
+                            </p>
+                            <div class="rating-labels">
+                                <span>Never true</span>
+                                <span>Always true</span>
+                            </div>
+                            <div class="rating-buttons" data-pillar="physical" data-question="4">
+                                <button type="button" class="rating-btn" data-value="1">1</button>
+                                <button type="button" class="rating-btn" data-value="2">2</button>
+                                <button type="button" class="rating-btn" data-value="3">3</button>
+                                <button type="button" class="rating-btn" data-value="4">4</button>
+                                <button type="button" class="rating-btn" data-value="5">5</button>
+                                <button type="button" class="rating-btn" data-value="6">6</button>
+                                <button type="button" class="rating-btn" data-value="7">7</button>
+                                <button type="button" class="rating-btn" data-value="8">8</button>
+                                <button type="button" class="rating-btn" data-value="9">9</button>
+                                <button type="button" class="rating-btn" data-value="10">10</button>
+                            </div>
+                        </div>
+                        <div class="question-group" style="border-color: #ff6b6b;">
+                            <p class="question">
+                                <span class="question-number">5</span>
+                                I get quality sleep and wake up feeling refreshed and restored.
+                            </p>
+                            <div class="rating-labels">
+                                <span>Never true</span>
+                                <span>Always true</span>
+                            </div>
+                            <div class="rating-buttons" data-pillar="physical" data-question="5">
+                                <button type="button" class="rating-btn" data-value="1">1</button>
+                                <button type="button" class="rating-btn" data-value="2">2</button>
+                                <button type="button" class="rating-btn" data-value="3">3</button>
+                                <button type="button" class="rating-btn" data-value="4">4</button>
+                                <button type="button" class="rating-btn" data-value="5">5</button>
+                                <button type="button" class="rating-btn" data-value="6">6</button>
+                                <button type="button" class="rating-btn" data-value="7">7</button>
+                                <button type="button" class="rating-btn" data-value="8">8</button>
+                                <button type="button" class="rating-btn" data-value="9">9</button>
+                                <button type="button" class="rating-btn" data-value="10">10</button>
+                            </div>
+                        </div>
+                        <div class="question-group" style="border-color: #ff6b6b;">
+                            <p class="question">
+                                <span class="question-number">6</span>
+                                I exercise or move my body regularly in ways that feel good.
+                            </p>
+                            <div class="rating-labels">
+                                <span>Never true</span>
+                                <span>Always true</span>
+                            </div>
+                            <div class="rating-buttons" data-pillar="physical" data-question="6">
+                                <button type="button" class="rating-btn" data-value="1">1</button>
+                                <button type="button" class="rating-btn" data-value="2">2</button>
+                                <button type="button" class="rating-btn" data-value="3">3</button>
+                                <button type="button" class="rating-btn" data-value="4">4</button>
+                                <button type="button" class="rating-btn" data-value="5">5</button>
+                                <button type="button" class="rating-btn" data-value="6">6</button>
+                                <button type="button" class="rating-btn" data-value="7">7</button>
+                                <button type="button" class="rating-btn" data-value="8">8</button>
+                                <button type="button" class="rating-btn" data-value="9">9</button>
+                                <button type="button" class="rating-btn" data-value="10">10</button>
+                            </div>
+                        </div>
+                        <div class="question-group" style="border-color: #ff6b6b;">
+                            <p class="question">
+                                <span class="question-number">7</span>
+                                My body feels strong, flexible, and capable of handling physical challenges.
+                            </p>
+                            <div class="rating-labels">
+                                <span>Never true</span>
+                                <span>Always true</span>
+                            </div>
+                            <div class="rating-buttons" data-pillar="physical" data-question="7">
+                                <button type="button" class="rating-btn" data-value="1">1</button>
+                                <button type="button" class="rating-btn" data-value="2">2</button>
+                                <button type="button" class="rating-btn" data-value="3">3</button>
+                                <button type="button" class="rating-btn" data-value="4">4</button>
+                                <button type="button" class="rating-btn" data-value="5">5</button>
+                                <button type="button" class="rating-btn" data-value="6">6</button>
+                                <button type="button" class="rating-btn" data-value="7">7</button>
+                                <button type="button" class="rating-btn" data-value="8">8</button>
+                                <button type="button" class="rating-btn" data-value="9">9</button>
+                                <button type="button" class="rating-btn" data-value="10">10</button>
+                            </div>
+                        </div>
+                        <div class="question-group" style="border-color: #ff6b6b;">
+                            <p class="question">
+                                <span class="question-number">8</span>
+                                I rarely get sick, and when I do, I recover quickly.
+                            </p>
+                            <div class="rating-labels">
+                                <span>Never true</span>
+                                <span>Always true</span>
+                            </div>
+                            <div class="rating-buttons" data-pillar="physical" data-question="8">
+                                <button type="button" class="rating-btn" data-value="1">1</button>
+                                <button type="button" class="rating-btn" data-value="2">2</button>
+                                <button type="button" class="rating-btn" data-value="3">3</button>
+                                <button type="button" class="rating-btn" data-value="4">4</button>
+                                <button type="button" class="rating-btn" data-value="5">5</button>
+                                <button type="button" class="rating-btn" data-value="6">6</button>
+                                <button type="button" class="rating-btn" data-value="7">7</button>
+                                <button type="button" class="rating-btn" data-value="8">8</button>
+                                <button type="button" class="rating-btn" data-value="9">9</button>
+                                <button type="button" class="rating-btn" data-value="10">10</button>
+                            </div>
+                        </div>
+                        <div class="question-group" style="border-color: #ff6b6b;">
+                            <p class="question">
+                                <span class="question-number">9</span>
+                                I listen to my body's signals and respond with care when it needs rest or attention.
+                            </p>
+                            <div class="rating-labels">
+                                <span>Never true</span>
+                                <span>Always true</span>
+                            </div>
+                            <div class="rating-buttons" data-pillar="physical" data-question="9">
+                                <button type="button" class="rating-btn" data-value="1">1</button>
+                                <button type="button" class="rating-btn" data-value="2">2</button>
+                                <button type="button" class="rating-btn" data-value="3">3</button>
+                                <button type="button" class="rating-btn" data-value="4">4</button>
+                                <button type="button" class="rating-btn" data-value="5">5</button>
+                                <button type="button" class="rating-btn" data-value="6">6</button>
+                                <button type="button" class="rating-btn" data-value="7">7</button>
+                                <button type="button" class="rating-btn" data-value="8">8</button>
+                                <button type="button" class="rating-btn" data-value="9">9</button>
+                                <button type="button" class="rating-btn" data-value="10">10</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="pillar-summary" id="physical-summary">
+                        <div class="summary-score">0</div>
+                        <div class="summary-label">Physical Health Average</div>
+                        <div class="summary-status"></div>
+                    </div>
+                </div>
+
+                <!-- Spiritual Health -->
+                <div class="pillar-section">
+                    <div class="pillar-header">
+                        <div class="pillar-icon" style="background: #4c6ef5; color: white;">🧘</div>
+                        <div class="pillar-title">
+                            <h3>Spiritual Health</h3>
+                            <p>Living with purpose, values, and integrity</p>
+                        </div>
+                    </div>
+                    
+                    <div class="questions-grid">
+                        <div class="question-group" style="border-color: #4c6ef5;">
+                            <p class="question">
+                                <span class="question-number">1</span>
+                                I have a clear sense of what's important to me in life.
+                            </p>
+                            <div class="rating-labels">
+                                <span>Never true</span>
+                                <span>Always true</span>
+                            </div>
+                            <div class="rating-buttons" data-pillar="spiritual" data-question="1">
+                                <button type="button" class="rating-btn" data-value="1">1</button>
+                                <button type="button" class="rating-btn" data-value="2">2</button>
+                                <button type="button" class="rating-btn" data-value="3">3</button>
+                                <button type="button" class="rating-btn" data-value="4">4</button>
+                                <button type="button" class="rating-btn" data-value="5">5</button>
+                                <button type="button" class="rating-btn" data-value="6">6</button>
+                                <button type="button" class="rating-btn" data-value="7">7</button>
+                                <button type="button" class="rating-btn" data-value="8">8</button>
+                                <button type="button" class="rating-btn" data-value="9">9</button>
+                                <button type="button" class="rating-btn" data-value="10">10</button>
+                            </div>
+                        </div>
+                        <div class="question-group" style="border-color: #4c6ef5;">
+                            <p class="question">
+                                <span class="question-number">2</span>
+                                My daily actions match what I say I believe in.
+                            </p>
+                            <div class="rating-labels">
+                                <span>Never true</span>
+                                <span>Always true</span>
+                            </div>
+                            <div class="rating-buttons" data-pillar="spiritual" data-question="2">
+                                <button type="button" class="rating-btn" data-value="1">1</button>
+                                <button type="button" class="rating-btn" data-value="2">2</button>
+                                <button type="button" class="rating-btn" data-value="3">3</button>
+                                <button type="button" class="rating-btn" data-value="4">4</button>
+                                <button type="button" class="rating-btn" data-value="5">5</button>
+                                <button type="button" class="rating-btn" data-value="6">6</button>
+                                <button type="button" class="rating-btn" data-value="7">7</button>
+                                <button type="button" class="rating-btn" data-value="8">8</button>
+                                <button type="button" class="rating-btn" data-value="9">9</button>
+                                <button type="button" class="rating-btn" data-value="10">10</button>
+                            </div>
+                        </div>
+                        <div class="question-group" style="border-color: #4c6ef5;">
+                            <p class="question">
+                                <span class="question-number">3</span>
+                                I stand up for what I believe is right, even when it's difficult.
+                            </p>
+                            <div class="rating-labels">
+                                <span>Never true</span>
+                                <span>Always true</span>
+                            </div>
+                            <div class="rating-buttons" data-pillar="spiritual" data-question="3">
+                                <button type="button" class="rating-btn" data-value="1">1</button>
+                                <button type="button" class="rating-btn" data-value="2">2</button>
+                                <button type="button" class="rating-btn" data-value="3">3</button>
+                                <button type="button" class="rating-btn" data-value="4">4</button>
+                                <button type="button" class="rating-btn" data-value="5">5</button>
+                                <button type="button" class="rating-btn" data-value="6">6</button>
+                                <button type="button" class="rating-btn" data-value="7">7</button>
+                                <button type="button" class="rating-btn" data-value="8">8</button>
+                                <button type="button" class="rating-btn" data-value="9">9</button>
+                                <button type="button" class="rating-btn" data-value="10">10</button>
+                            </div>
+                        </div>
+                        <div class="question-group" style="border-color: #4c6ef5;">
+                            <p class="question">
+                                <span class="question-number">4</span>
+                                I feel connected to something bigger than myself (community, nature, purpose, etc.).
+                            </p>
+                            <div class="rating-labels">
+                                <span>Never true</span>
+                                <span>Always true</span>
+                            </div>
+                            <div class="rating-buttons" data-pillar="spiritual" data-question="4">
+                                <button type="button" class="rating-btn" data-value="1">1</button>
+                                <button type="button" class="rating-btn" data-value="2">2</button>
+                                <button type="button" class="rating-btn" data-value="3">3</button>
+                                <button type="button" class="rating-btn" data-value="4">4</button>
+                                <button type="button" class="rating-btn" data-value="5">5</button>
+                                <button type="button" class="rating-btn" data-value="6">6</button>
+                                <button type="button" class="rating-btn" data-value="7">7</button>
+                                <button type="button" class="rating-btn" data-value="8">8</button>
+                                <button type="button" class="rating-btn" data-value="9">9</button>
+                                <button type="button" class="rating-btn" data-value="10">10</button>
+                            </div>
+                        </div>
+                        <div class="question-group" style="border-color: #4c6ef5;">
+                            <p class="question">
+                                <span class="question-number">5</span>
+                                When I make mistakes, I take responsibility and try to make things right.
+                            </p>
+                            <div class="rating-labels">
+                                <span>Never true</span>
+                                <span>Always true</span>
+                            </div>
+                            <div class="rating-buttons" data-pillar="spiritual" data-question="5">
+                                <button type="button" class="rating-btn" data-value="1">1</button>
+                                <button type="button" class="rating-btn" data-value="2">2</button>
+                                <button type="button" class="rating-btn" data-value="3">3</button>
+                                <button type="button" class="rating-btn" data-value="4">4</button>
+                                <button type="button" class="rating-btn" data-value="5">5</button>
+                                <button type="button" class="rating-btn" data-value="6">6</button>
+                                <button type="button" class="rating-btn" data-value="7">7</button>
+                                <button type="button" class="rating-btn" data-value="8">8</button>
+                                <button type="button" class="rating-btn" data-value="9">9</button>
+                                <button type="button" class="rating-btn" data-value="10">10</button>
+                            </div>
+                        </div>
+                        <div class="question-group" style="border-color: #4c6ef5;">
+                            <p class="question">
+                                <span class="question-number">6</span>
+                                I stay humble when I succeed and grateful for what I have.
+                            </p>
+                            <div class="rating-labels">
+                                <span>Never true</span>
+                                <span>Always true</span>
+                            </div>
+                            <div class="rating-buttons" data-pillar="spiritual" data-question="6">
+                                <button type="button" class="rating-btn" data-value="1">1</button>
+                                <button type="button" class="rating-btn" data-value="2">2</button>
+                                <button type="button" class="rating-btn" data-value="3">3</button>
+                                <button type="button" class="rating-btn" data-value="4">4</button>
+                                <button type="button" class="rating-btn" data-value="5">5</button>
+                                <button type="button" class="rating-btn" data-value="6">6</button>
+                                <button type="button" class="rating-btn" data-value="7">7</button>
+                                <button type="button" class="rating-btn" data-value="8">8</button>
+                                <button type="button" class="rating-btn" data-value="9">9</button>
+                                <button type="button" class="rating-btn" data-value="10">10</button>
+                            </div>
+                        </div>
+                        <div class="question-group" style="border-color: #4c6ef5;">
+                            <p class="question">
+                                <span class="question-number">7</span>
+                                I have daily practices or rituals that keep me grounded and centered.
+                            </p>
+                            <div class="rating-labels">
+                                <span>Never true</span>
+                                <span>Always true</span>
+                            </div>
+                            <div class="rating-buttons" data-pillar="spiritual" data-question="7">
+                                <button type="button" class="rating-btn" data-value="1">1</button>
+                                <button type="button" class="rating-btn" data-value="2">2</button>
+                                <button type="button" class="rating-btn" data-value="3">3</button>
+                                <button type="button" class="rating-btn" data-value="4">4</button>
+                                <button type="button" class="rating-btn" data-value="5">5</button>
+                                <button type="button" class="rating-btn" data-value="6">6</button>
+                                <button type="button" class="rating-btn" data-value="7">7</button>
+                                <button type="button" class="rating-btn" data-value="8">8</button>
+                                <button type="button" class="rating-btn" data-value="9">9</button>
+                                <button type="button" class="rating-btn" data-value="10">10</button>
+                            </div>
+                        </div>
+                        <div class="question-group" style="border-color: #4c6ef5;">
+                            <p class="question">
+                                <span class="question-number">8</span>
+                                I contribute to others or causes beyond my personal benefit.
+                            </p>
+                            <div class="rating-labels">
+                                <span>Never true</span>
+                                <span>Always true</span>
+                            </div>
+                            <div class="rating-buttons" data-pillar="spiritual" data-question="8">
+                                <button type="button" class="rating-btn" data-value="1">1</button>
+                                <button type="button" class="rating-btn" data-value="2">2</button>
+                                <button type="button" class="rating-btn" data-value="3">3</button>
+                                <button type="button" class="rating-btn" data-value="4">4</button>
+                                <button type="button" class="rating-btn" data-value="5">5</button>
+                                <button type="button" class="rating-btn" data-value="6">6</button>
+                                <button type="button" class="rating-btn" data-value="7">7</button>
+                                <button type="button" class="rating-btn" data-value="8">8</button>
+                                <button type="button" class="rating-btn" data-value="9">9</button>
+                                <button type="button" class="rating-btn" data-value="10">10</button>
+                            </div>
+                        </div>
+                        <div class="question-group" style="border-color: #4c6ef5;">
+                            <p class="question">
+                                <span class="question-number">9</span>
+                                My life has meaning and direction that guides my decisions.
+                            </p>
+                            <div class="rating-labels">
+                                <span>Never true</span>
+                                <span>Always true</span>
+                            </div>
+                            <div class="rating-buttons" data-pillar="spiritual" data-question="9">
+                                <button type="button" class="rating-btn" data-value="1">1</button>
+                                <button type="button" class="rating-btn" data-value="2">2</button>
+                                <button type="button" class="rating-btn" data-value="3">3</button>
+                                <button type="button" class="rating-btn" data-value="4">4</button>
+                                <button type="button" class="rating-btn" data-value="5">5</button>
+                                <button type="button" class="rating-btn" data-value="6">6</button>
+                                <button type="button" class="rating-btn" data-value="7">7</button>
+                                <button type="button" class="rating-btn" data-value="8">8</button>
+                                <button type="button" class="rating-btn" data-value="9">9</button>
+                                <button type="button" class="rating-btn" data-value="10">10</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="pillar-summary" id="spiritual-summary">
+                        <div class="summary-score">0</div>
+                        <div class="summary-label">Spiritual Health Average</div>
+                        <div class="summary-status"></div>
+                    </div>
+                </div>
+
+                <!-- Mental Health -->
+                <div class="pillar-section">
+                    <div class="pillar-header">
+                        <div class="pillar-icon" style="background: #15aabf; color: white;">🧠</div>
+                        <div class="pillar-title">
+                            <h3>Mental Health</h3>
+                            <p>Clear thinking and effective problem-solving</p>
+                        </div>
+                    </div>
+                    
+                    <div class="questions-grid">
+                        <div class="question-group" style="border-color: #15aabf;">
+                            <p class="question">
+                                <span class="question-number">1</span>
+                                I can focus on tasks without my mind constantly wandering.
+                            </p>
+                            <div class="rating-labels">
+                                <span>Never true</span>
+                                <span>Always true</span>
+                            </div>
+                            <div class="rating-buttons" data-pillar="mental" data-question="1">
+                                <button type="button" class="rating-btn" data-value="1">1</button>
+                                <button type="button" class="rating-btn" data-value="2">2</button>
+                                <button type="button" class="rating-btn" data-value="3">3</button>
+                                <button type="button" class="rating-btn" data-value="4">4</button>
+                                <button type="button" class="rating-btn" data-value="5">5</button>
+                                <button type="button" class="rating-btn" data-value="6">6</button>
+                                <button type="button" class="rating-btn" data-value="7">7</button>
+                                <button type="button" class="rating-btn" data-value="8">8</button>
+                                <button type="button" class="rating-btn" data-value="9">9</button>
+                                <button type="button" class="rating-btn" data-value="10">10</button>
+                            </div>
+                        </div>
+                        <div class="question-group" style="border-color: #15aabf;">
+                            <p class="question">
+                                <span class="question-number">2</span>
+                                I think clearly even when under pressure or stress.
+                            </p>
+                            <div class="rating-labels">
+                                <span>Never true</span>
+                                <span>Always true</span>
+                            </div>
+                            <div class="rating-buttons" data-pillar="mental" data-question="2">
+                                <button type="button" class="rating-btn" data-value="1">1</button>
+                                <button type="button" class="rating-btn" data-value="2">2</button>
+                                <button type="button" class="rating-btn" data-value="3">3</button>
+                                <button type="button" class="rating-btn" data-value="4">4</button>
+                                <button type="button" class="rating-btn" data-value="5">5</button>
+                                <button type="button" class="rating-btn" data-value="6">6</button>
+                                <button type="button" class="rating-btn" data-value="7">7</button>
+                                <button type="button" class="rating-btn" data-value="8">8</button>
+                                <button type="button" class="rating-btn" data-value="9">9</button>
+                                <button type="button" class="rating-btn" data-value="10">10</button>
+                            </div>
+                        </div>
+                        <div class="question-group" style="border-color: #15aabf;">
+                            <p class="question">
+                                <span class="question-number">3</span>
+                                I can solve problems by looking at them from different angles.
+                            </p>
+                            <div class="rating-labels">
+                                <span>Never true</span>
+                                <span>Always true</span>
+                            </div>
+                            <div class="rating-buttons" data-pillar="mental" data-question="3">
+                                <button type="button" class="rating-btn" data-value="1">1</button>
+                                <button type="button" class="rating-btn" data-value="2">2</button>
+                                <button type="button" class="rating-btn" data-value="3">3</button>
+                                <button type="button" class="rating-btn" data-value="4">4</button>
+                                <button type="button" class="rating-btn" data-value="5">5</button>
+                                <button type="button" class="rating-btn" data-value="6">6</button>
+                                <button type="button" class="rating-btn" data-value="7">7</button>
+                                <button type="button" class="rating-btn" data-value="8">8</button>
+                                <button type="button" class="rating-btn" data-value="9">9</button>
+                                <button type="button" class="rating-btn" data-value="10">10</button>
+                            </div>
+                        </div>
+                        <div class="question-group" style="border-color: #15aabf;">
+                            <p class="question">
+                                <span class="question-number">4</span>
+                                I learn new things easily and remember what I've learned.
+                            </p>
+                            <div class="rating-labels">
+                                <span>Never true</span>
+                                <span>Always true</span>
+                            </div>
+                            <div class="rating-buttons" data-pillar="mental" data-question="4">
+                                <button type="button" class="rating-btn" data-value="1">1</button>
+                                <button type="button" class="rating-btn" data-value="2">2</button>
+                                <button type="button" class="rating-btn" data-value="3">3</button>
+                                <button type="button" class="rating-btn" data-value="4">4</button>
+                                <button type="button" class="rating-btn" data-value="5">5</button>
+                                <button type="button" class="rating-btn" data-value="6">6</button>
+                                <button type="button" class="rating-btn" data-value="7">7</button>
+                                <button type="button" class="rating-btn" data-value="8">8</button>
+                                <button type="button" class="rating-btn" data-value="9">9</button>
+                                <button type="button" class="rating-btn" data-value="10">10</button>
+                            </div>
+                        </div>
+                        <div class="question-group" style="border-color: #15aabf;">
+                            <p class="question">
+                                <span class="question-number">5</span>
+                                I see situations for what they really are, not what I wish they were.
+                            </p>
+                            <div class="rating-labels">
+                                <span>Never true</span>
+                                <span>Always true</span>
+                            </div>
+                            <div class="rating-buttons" data-pillar="mental" data-question="5">
+                                <button type="button" class="rating-btn" data-value="1">1</button>
+                                <button type="button" class="rating-btn" data-value="2">2</button>
+                                <button type="button" class="rating-btn" data-value="3">3</button>
+                                <button type="button" class="rating-btn" data-value="4">4</button>
+                                <button type="button" class="rating-btn" data-value="5">5</button>
+                                <button type="button" class="rating-btn" data-value="6">6</button>
+                                <button type="button" class="rating-btn" data-value="7">7</button>
+                                <button type="button" class="rating-btn" data-value="8">8</button>
+                                <button type="button" class="rating-btn" data-value="9">9</button>
+                                <button type="button" class="rating-btn" data-value="10">10</button>
+                            </div>
+                        </div>
+                        <div class="question-group" style="border-color: #15aabf;">
+                            <p class="question">
+                                <span class="question-number">6</span>
+                                I make decisions based on facts rather than assumptions or fears.
+                            </p>
+                            <div class="rating-labels">
+                                <span>Never true</span>
+                                <span>Always true</span>
+                            </div>
+                            <div class="rating-buttons" data-pillar="mental" data-question="6">
+                                <button type="button" class="rating-btn" data-value="1">1</button>
+                                <button type="button" class="rating-btn" data-value="2">2</button>
+                                <button type="button" class="rating-btn" data-value="3">3</button>
+                                <button type="button" class="rating-btn" data-value="4">4</button>
+                                <button type="button" class="rating-btn" data-value="5">5</button>
+                                <button type="button" class="rating-btn" data-value="6">6</button>
+                                <button type="button" class="rating-btn" data-value="7">7</button>
+                                <button type="button" class="rating-btn" data-value="8">8</button>
+                                <button type="button" class="rating-btn" data-value="9">9</button>
+                                <button type="button" class="rating-btn" data-value="10">10</button>
+                            </div>
+                        </div>
+                        <div class="question-group" style="border-color: #15aabf;">
+                            <p class="question">
+                                <span class="question-number">7</span>
+                                I complete tasks efficiently without getting overwhelmed.
+                            </p>
+                            <div class="rating-labels">
+                                <span>Never true</span>
+                                <span>Always true</span>
+                            </div>
+                            <div class="rating-buttons" data-pillar="mental" data-question="7">
+                                <button type="button" class="rating-btn" data-value="1">1</button>
+                                <button type="button" class="rating-btn" data-value="2">2</button>
+                                <button type="button" class="rating-btn" data-value="3">3</button>
+                                <button type="button" class="rating-btn" data-value="4">4</button>
+                                <button type="button" class="rating-btn" data-value="5">5</button>
+                                <button type="button" class="rating-btn" data-value="6">6</button>
+                                <button type="button" class="rating-btn" data-value="7">7</button>
+                                <button type="button" class="rating-btn" data-value="8">8</button>
+                                <button type="button" class="rating-btn" data-value="9">9</button>
+                                <button type="button" class="rating-btn" data-value="10">10</button>
+                            </div>
+                        </div>
+                        <div class="question-group" style="border-color: #15aabf;">
+                            <p class="question">
+                                <span class="question-number">8</span>
+                                I question my own thoughts and recognize when I might be wrong.
+                            </p>
+                            <div class="rating-labels">
+                                <span>Never true</span>
+                                <span>Always true</span>
+                            </div>
+                            <div class="rating-buttons" data-pillar="mental" data-question="8">
+                                <button type="button" class="rating-btn" data-value="1">1</button>
+                                <button type="button" class="rating-btn" data-value="2">2</button>
+                                <button type="button" class="rating-btn" data-value="3">3</button>
+                                <button type="button" class="rating-btn" data-value="4">4</button>
+                                <button type="button" class="rating-btn" data-value="5">5</button>
+                                <button type="button" class="rating-btn" data-value="6">6</button>
+                                <button type="button" class="rating-btn" data-value="7">7</button>
+                                <button type="button" class="rating-btn" data-value="8">8</button>
+                                <button type="button" class="rating-btn" data-value="9">9</button>
+                                <button type="button" class="rating-btn" data-value="10">10</button>
+                            </div>
+                        </div>
+                        <div class="question-group" style="border-color: #15aabf;">
+                            <p class="question">
+                                <span class="question-number">9</span>
+                                I respond to challenges with helpful actions rather than just worrying.
+                            </p>
+                            <div class="rating-labels">
+                                <span>Never true</span>
+                                <span>Always true</span>
+                            </div>
+                            <div class="rating-buttons" data-pillar="mental" data-question="9">
+                                <button type="button" class="rating-btn" data-value="1">1</button>
+                                <button type="button" class="rating-btn" data-value="2">2</button>
+                                <button type="button" class="rating-btn" data-value="3">3</button>
+                                <button type="button" class="rating-btn" data-value="4">4</button>
+                                <button type="button" class="rating-btn" data-value="5">5</button>
+                                <button type="button" class="rating-btn" data-value="6">6</button>
+                                <button type="button" class="rating-btn" data-value="7">7</button>
+                                <button type="button" class="rating-btn" data-value="8">8</button>
+                                <button type="button" class="rating-btn" data-value="9">9</button>
+                                <button type="button" class="rating-btn" data-value="10">10</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="pillar-summary" id="mental-summary">
+                        <div class="summary-score">0</div>
+                        <div class="summary-label">Mental Health Average</div>
+                        <div class="summary-status"></div>
+                    </div>
+                </div>
+
+                <!-- Emotional Health -->
+                <div class="pillar-section">
+                    <div class="pillar-header">
+                        <div class="pillar-icon" style="background: #fa5252; color: white;">❤️</div>
+                        <div class="pillar-title">
+                            <h3>Emotional Health</h3>
+                            <p>Understanding and managing your feelings</p>
+                        </div>
+                    </div>
+                    
+                    <div class="questions-grid">
+                        <div class="question-group" style="border-color: #fa5252;">
+                            <p class="question">
+                                <span class="question-number">1</span>
+                                I know what I'm feeling and can name my emotions.
+                            </p>
+                            <div class="rating-labels">
+                                <span>Never true</span>
+                                <span>Always true</span>
+                            </div>
+                            <div class="rating-buttons" data-pillar="emotional" data-question="1">
+                                <button type="button" class="rating-btn" data-value="1">1</button>
+                                <button type="button" class="rating-btn" data-value="2">2</button>
+                                <button type="button" class="rating-btn" data-value="3">3</button>
+                                <button type="button" class="rating-btn" data-value="4">4</button>
+                                <button type="button" class="rating-btn" data-value="5">5</button>
+                                <button type="button" class="rating-btn" data-value="6">6</button>
+                                <button type="button" class="rating-btn" data-value="7">7</button>
+                                <button type="button" class="rating-btn" data-value="8">8</button>
+                                <button type="button" class="rating-btn" data-value="9">9</button>
+                                <button type="button" class="rating-btn" data-value="10">10</button>
+                            </div>
+                        </div>
+                        <div class="question-group" style="border-color: #fa5252;">
+                            <p class="question">
+                                <span class="question-number">2</span>
+                                I can calm myself down when I'm upset or angry.
+                            </p>
+                            <div class="rating-labels">
+                                <span>Never true</span>
+                                <span>Always true</span>
+                            </div>
+                            <div class="rating-buttons" data-pillar="emotional" data-question="2">
+                                <button type="button" class="rating-btn" data-value="1">1</button>
+                                <button type="button" class="rating-btn" data-value="2">2</button>
+                                <button type="button" class="rating-btn" data-value="3">3</button>
+                                <button type="button" class="rating-btn" data-value="4">4</button>
+                                <button type="button" class="rating-btn" data-value="5">5</button>
+                                <button type="button" class="rating-btn" data-value="6">6</button>
+                                <button type="button" class="rating-btn" data-value="7">7</button>
+                                <button type="button" class="rating-btn" data-value="8">8</button>
+                                <button type="button" class="rating-btn" data-value="9">9</button>
+                                <button type="button" class="rating-btn" data-value="10">10</button>
+                            </div>
+                        </div>
+                        <div class="question-group" style="border-color: #fa5252;">
+                            <p class="question">
+                                <span class="question-number">3</span>
+                                I choose how to respond rather than just reacting automatically.
+                            </p>
+                            <div class="rating-labels">
+                                <span>Never true</span>
+                                <span>Always true</span>
+                            </div>
+                            <div class="rating-buttons" data-pillar="emotional" data-question="3">
+                                <button type="button" class="rating-btn" data-value="1">1</button>
+                                <button type="button" class="rating-btn" data-value="2">2</button>
+                                <button type="button" class="rating-btn" data-value="3">3</button>
+                                <button type="button" class="rating-btn" data-value="4">4</button>
+                                <button type="button" class="rating-btn" data-value="5">5</button>
+                                <button type="button" class="rating-btn" data-value="6">6</button>
+                                <button type="button" class="rating-btn" data-value="7">7</button>
+                                <button type="button" class="rating-btn" data-value="8">8</button>
+                                <button type="button" class="rating-btn" data-value="9">9</button>
+                                <button type="button" class="rating-btn" data-value="10">10</button>
+                            </div>
+                        </div>
+                        <div class="question-group" style="border-color: #fa5252;">
+                            <p class="question">
+                                <span class="question-number">4</span>
+                                I understand why I feel the way I do in different situations.
+                            </p>
+                            <div class="rating-labels">
+                                <span>Never true</span>
+                                <span>Always true</span>
+                            </div>
+                            <div class="rating-buttons" data-pillar="emotional" data-question="4">
+                                <button type="button" class="rating-btn" data-value="1">1</button>
+                                <button type="button" class="rating-btn" data-value="2">2</button>
+                                <button type="button" class="rating-btn" data-value="3">3</button>
+                                <button type="button" class="rating-btn" data-value="4">4</button>
+                                <button type="button" class="rating-btn" data-value="5">5</button>
+                                <button type="button" class="rating-btn" data-value="6">6</button>
+                                <button type="button" class="rating-btn" data-value="7">7</button>
+                                <button type="button" class="rating-btn" data-value="8">8</button>
+                                <button type="button" class="rating-btn" data-value="9">9</button>
+                                <button type="button" class="rating-btn" data-value="10">10</button>
+                            </div>
+                        </div>
+                        <div class="question-group" style="border-color: #fa5252;">
+                            <p class="question">
+                                <span class="question-number">5</span>
+                                I can feel sad, angry, or afraid without being controlled by these feelings.
+                            </p>
+                            <div class="rating-labels">
+                                <span>Never true</span>
+                                <span>Always true</span>
+                            </div>
+                            <div class="rating-buttons" data-pillar="emotional" data-question="5">
+                                <button type="button" class="rating-btn" data-value="1">1</button>
+                                <button type="button" class="rating-btn" data-value="2">2</button>
+                                <button type="button" class="rating-btn" data-value="3">3</button>
+                                <button type="button" class="rating-btn" data-value="4">4</button>
+                                <button type="button" class="rating-btn" data-value="5">5</button>
+                                <button type="button" class="rating-btn" data-value="6">6</button>
+                                <button type="button" class="rating-btn" data-value="7">7</button>
+                                <button type="button" class="rating-btn" data-value="8">8</button>
+                                <button type="button" class="rating-btn" data-value="9">9</button>
+                                <button type="button" class="rating-btn" data-value="10">10</button>
+                            </div>
+                        </div>
+                        <div class="question-group" style="border-color: #fa5252;">
+                            <p class="question">
+                                <span class="question-number">6</span>
+                                I can sense what others are feeling without them telling me.
+                            </p>
+                            <div class="rating-labels">
+                                <span>Never true</span>
+                                <span>Always true</span>
+                            </div>
+                            <div class="rating-buttons" data-pillar="emotional" data-question="6">
+                                <button type="button" class="rating-btn" data-value="1">1</button>
+                                <button type="button" class="rating-btn" data-value="2">2</button>
+                                <button type="button" class="rating-btn" data-value="3">3</button>
+                                <button type="button" class="rating-btn" data-value="4">4</button>
+                                <button type="button" class="rating-btn" data-value="5">5</button>
+                                <button type="button" class="rating-btn" data-value="6">6</button>
+                                <button type="button" class="rating-btn" data-value="7">7</button>
+                                <button type="button" class="rating-btn" data-value="8">8</button>
+                                <button type="button" class="rating-btn" data-value="9">9</button>
+                                <button type="button" class="rating-btn" data-value="10">10</button>
+                            </div>
+                        </div>
+                        <div class="question-group" style="border-color: #fa5252;">
+                            <p class="question">
+                                <span class="question-number">7</span>
+                                I stay calm and composed even when others around me are upset.
+                            </p>
+                            <div class="rating-labels">
+                                <span>Never true</span>
+                                <span>Always true</span>
+                            </div>
+                            <div class="rating-buttons" data-pillar="emotional" data-question="7">
+                                <button type="button" class="rating-btn" data-value="1">1</button>
+                                <button type="button" class="rating-btn" data-value="2">2</button>
+                                <button type="button" class="rating-btn" data-value="3">3</button>
+                                <button type="button" class="rating-btn" data-value="4">4</button>
+                                <button type="button" class="rating-btn" data-value="5">5</button>
+                                <button type="button" class="rating-btn" data-value="6">6</button>
+                                <button type="button" class="rating-btn" data-value="7">7</button>
+                                <button type="button" class="rating-btn" data-value="8">8</button>
+                                <button type="button" class="rating-btn" data-value="9">9</button>
+                                <button type="button" class="rating-btn" data-value="10">10</button>
+                            </div>
+                        </div>
+                        <div class="question-group" style="border-color: #fa5252;">
+                            <p class="question">
+                                <span class="question-number">8</span>
+                                I express my feelings in healthy ways that don't hurt myself or others.
+                            </p>
+                            <div class="rating-labels">
+                                <span>Never true</span>
+                                <span>Always true</span>
+                            </div>
+                            <div class="rating-buttons" data-pillar="emotional" data-question="8">
+                                <button type="button" class="rating-btn" data-value="1">1</button>
+                                <button type="button" class="rating-btn" data-value="2">2</button>
+                                <button type="button" class="rating-btn" data-value="3">3</button>
+                                <button type="button" class="rating-btn" data-value="4">4</button>
+                                <button type="button" class="rating-btn" data-value="5">5</button>
+                                <button type="button" class="rating-btn" data-value="6">6</button>
+                                <button type="button" class="rating-btn" data-value="7">7</button>
+                                <button type="button" class="rating-btn" data-value="8">8</button>
+                                <button type="button" class="rating-btn" data-value="9">9</button>
+                                <button type="button" class="rating-btn" data-value="10">10</button>
+                            </div>
+                        </div>
+                        <div class="question-group" style="border-color: #fa5252;">
+                            <p class="question">
+                                <span class="question-number">9</span>
+                                I maintain my emotional balance throughout the day.
+                            </p>
+                            <div class="rating-labels">
+                                <span>Never true</span>
+                                <span>Always true</span>
+                            </div>
+                            <div class="rating-buttons" data-pillar="emotional" data-question="9">
+                                <button type="button" class="rating-btn" data-value="1">1</button>
+                                <button type="button" class="rating-btn" data-value="2">2</button>
+                                <button type="button" class="rating-btn" data-value="3">3</button>
+                                <button type="button" class="rating-btn" data-value="4">4</button>
+                                <button type="button" class="rating-btn" data-value="5">5</button>
+                                <button type="button" class="rating-btn" data-value="6">6</button>
+                                <button type="button" class="rating-btn" data-value="7">7</button>
+                                <button type="button" class="rating-btn" data-value="8">8</button>
+                                <button type="button" class="rating-btn" data-value="9">9</button>
+                                <button type="button" class="rating-btn" data-value="10">10</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="pillar-summary" id="emotional-summary">
+                        <div class="summary-score">0</div>
+                        <div class="summary-label">Emotional Health Average</div>
+                        <div class="summary-status"></div>
+                    </div>
+                </div>
+
+                <!-- Relational Health -->
+                <div class="pillar-section">
+                    <div class="pillar-header">
+                        <div class="pillar-icon" style="background: #fd7e14; color: white;">🤝</div>
+                        <div class="pillar-title">
+                            <h3>Relational Health</h3>
+                            <p>Building and maintaining healthy connections</p>
+                        </div>
+                    </div>
+                    
+                    <div class="questions-grid">
+                        <div class="question-group" style="border-color: #fd7e14;">
+                            <p class="question">
+                                <span class="question-number">1</span>
+                                I easily start conversations and connect with new people.
+                            </p>
+                            <div class="rating-labels">
+                                <span>Never true</span>
+                                <span>Always true</span>
+                            </div>
+                            <div class="rating-buttons" data-pillar="relational" data-question="1">
+                                <button type="button" class="rating-btn" data-value="1">1</button>
+                                <button type="button" class="rating-btn" data-value="2">2</button>
+                                <button type="button" class="rating-btn" data-value="3">3</button>
+                                <button type="button" class="rating-btn" data-value="4">4</button>
+                                <button type="button" class="rating-btn" data-value="5">5</button>
+                                <button type="button" class="rating-btn" data-value="6">6</button>
+                                <button type="button" class="rating-btn" data-value="7">7</button>
+                                <button type="button" class="rating-btn" data-value="8">8</button>
+                                <button type="button" class="rating-btn" data-value="9">9</button>
+                                <button type="button" class="rating-btn" data-value="10">10</button>
+                            </div>
+                        </div>
+                        <div class="question-group" style="border-color: #fd7e14;">
+                            <p class="question">
+                                <span class="question-number">2</span>
+                                I have close relationships where I can be completely myself.
+                            </p>
+                            <div class="rating-labels">
+                                <span>Never true</span>
+                                <span>Always true</span>
+                            </div>
+                            <div class="rating-buttons" data-pillar="relational" data-question="2">
+                                <button type="button" class="rating-btn" data-value="1">1</button>
+                                <button type="button" class="rating-btn" data-value="2">2</button>
+                                <button type="button" class="rating-btn" data-value="3">3</button>
+                                <button type="button" class="rating-btn" data-value="4">4</button>
+                                <button type="button" class="rating-btn" data-value="5">5</button>
+                                <button type="button" class="rating-btn" data-value="6">6</button>
+                                <button type="button" class="rating-btn" data-value="7">7</button>
+                                <button type="button" class="rating-btn" data-value="8">8</button>
+                                <button type="button" class="rating-btn" data-value="9">9</button>
+                                <button type="button" class="rating-btn" data-value="10">10</button>
+                            </div>
+                        </div>
+                        <div class="question-group" style="border-color: #fd7e14;">
+                            <p class="question">
+                                <span class="question-number">3</span>
+                                I listen to others without interrupting or thinking about what I'll say next.
+                            </p>
+                            <div class="rating-labels">
+                                <span>Never true</span>
+                                <span>Always true</span>
+                            </div>
+                            <div class="rating-buttons" data-pillar="relational" data-question="3">
+                                <button type="button" class="rating-btn" data-value="1">1</button>
+                                <button type="button" class="rating-btn" data-value="2">2</button>
+                                <button type="button" class="rating-btn" data-value="3">3</button>
+                                <button type="button" class="rating-btn" data-value="4">4</button>
+                                <button type="button" class="rating-btn" data-value="5">5</button>
+                                <button type="button" class="rating-btn" data-value="6">6</button>
+                                <button type="button" class="rating-btn" data-value="7">7</button>
+                                <button type="button" class="rating-btn" data-value="8">8</button>
+                                <button type="button" class="rating-btn" data-value="9">9</button>
+                                <button type="button" class="rating-btn" data-value="10">10</button>
+                            </div>
+                        </div>
+                        <div class="question-group" style="border-color: #fd7e14;">
+                            <p class="question">
+                                <span class="question-number">4</span>
+                                I express my needs and boundaries clearly and kindly.
+                            </p>
+                            <div class="rating-labels">
+                                <span>Never true</span>
+                                <span>Always true</span>
+                            </div>
+                            <div class="rating-buttons" data-pillar="relational" data-question="4">
+                                <button type="button" class="rating-btn" data-value="1">1</button>
+                                <button type="button" class="rating-btn" data-value="2">2</button>
+                                <button type="button" class="rating-btn" data-value="3">3</button>
+                                <button type="button" class="rating-btn" data-value="4">4</button>
+                                <button type="button" class="rating-btn" data-value="5">5</button>
+                                <button type="button" class="rating-btn" data-value="6">6</button>
+                                <button type="button" class="rating-btn" data-value="7">7</button>
+                                <button type="button" class="rating-btn" data-value="8">8</button>
+                                <button type="button" class="rating-btn" data-value="9">9</button>
+                                <button type="button" class="rating-btn" data-value="10">10</button>
+                            </div>
+                        </div>
+                        <div class="question-group" style="border-color: #fd7e14;">
+                            <p class="question">
+                                <span class="question-number">5</span>
+                                After spending time with people, I feel energized rather than drained.
+                            </p>
+                            <div class="rating-labels">
+                                <span>Never true</span>
+                                <span>Always true</span>
+                            </div>
+                            <div class="rating-buttons" data-pillar="relational" data-question="5">
+                                <button type="button" class="rating-btn" data-value="1">1</button>
+                                <button type="button" class="rating-btn" data-value="2">2</button>
+                                <button type="button" class="rating-btn" data-value="3">3</button>
+                                <button type="button" class="rating-btn" data-value="4">4</button>
+                                <button type="button" class="rating-btn" data-value="5">5</button>
+                                <button type="button" class="rating-btn" data-value="6">6</button>
+                                <button type="button" class="rating-btn" data-value="7">7</button>
+                                <button type="button" class="rating-btn" data-value="8">8</button>
+                                <button type="button" class="rating-btn" data-value="9">9</button>
+                                <button type="button" class="rating-btn" data-value="10">10</button>
+                            </div>
+                        </div>
+                        <div class="question-group" style="border-color: #fd7e14;">
+                            <p class="question">
+                                <span class="question-number">6</span>
+                                I can disagree with someone without damaging the relationship.
+                            </p>
+                            <div class="rating-labels">
+                                <span>Never true</span>
+                                <span>Always true</span>
+                            </div>
+                            <div class="rating-buttons" data-pillar="relational" data-question="6">
+                                <button type="button" class="rating-btn" data-value="1">1</button>
+                                <button type="button" class="rating-btn" data-value="2">2</button>
+                                <button type="button" class="rating-btn" data-value="3">3</button>
+                                <button type="button" class="rating-btn" data-value="4">4</button>
+                                <button type="button" class="rating-btn" data-value="5">5</button>
+                                <button type="button" class="rating-btn" data-value="6">6</button>
+                                <button type="button" class="rating-btn" data-value="7">7</button>
+                                <button type="button" class="rating-btn" data-value="8">8</button>
+                                <button type="button" class="rating-btn" data-value="9">9</button>
+                                <button type="button" class="rating-btn" data-value="10">10</button>
+                            </div>
+                        </div>
+                        <div class="question-group" style="border-color: #fd7e14;">
+                            <p class="question">
+                                <span class="question-number">7</span>
+                                I give and receive help comfortably without feeling awkward.
+                            </p>
+                            <div class="rating-labels">
+                                <span>Never true</span>
+                                <span>Always true</span>
+                            </div>
+                            <div class="rating-buttons" data-pillar="relational" data-question="7">
+                                <button type="button" class="rating-btn" data-value="1">1</button>
+                                <button type="button" class="rating-btn" data-value="2">2</button>
+                                <button type="button" class="rating-btn" data-value="3">3</button>
+                                <button type="button" class="rating-btn" data-value="4">4</button>
+                                <button type="button" class="rating-btn" data-value="5">5</button>
+                                <button type="button" class="rating-btn" data-value="6">6</button>
+                                <button type="button" class="rating-btn" data-value="7">7</button>
+                                <button type="button" class="rating-btn" data-value="8">8</button>
+                                <button type="button" class="rating-btn" data-value="9">9</button>
+                                <button type="button" class="rating-btn" data-value="10">10</button>
+                            </div>
+                        </div>
+                        <div class="question-group" style="border-color: #fd7e14;">
+                            <p class="question">
+                                <span class="question-number">8</span>
+                                My relationships are balanced - I don't just give or just take.
+                            </p>
+                            <div class="rating-labels">
+                                <span>Never true</span>
+                                <span>Always true</span>
+                            </div>
+                            <div class="rating-buttons" data-pillar="relational" data-question="8">
+                                <button type="button" class="rating-btn" data-value="1">1</button>
+                                <button type="button" class="rating-btn" data-value="2">2</button>
+                                <button type="button" class="rating-btn" data-value="3">3</button>
+                                <button type="button" class="rating-btn" data-value="4">4</button>
+                                <button type="button" class="rating-btn" data-value="5">5</button>
+                                <button type="button" class="rating-btn" data-value="6">6</button>
+                                <button type="button" class="rating-btn" data-value="7">7</button>
+                                <button type="button" class="rating-btn" data-value="8">8</button>
+                                <button type="button" class="rating-btn" data-value="9">9</button>
+                                <button type="button" class="rating-btn" data-value="10">10</button>
+                            </div>
+                        </div>
+                        <div class="question-group" style="border-color: #fd7e14;">
+                            <p class="question">
+                                <span class="question-number">9</span>
+                                I have people I can turn to when I need support or celebration.
+                            </p>
+                            <div class="rating-labels">
+                                <span>Never true</span>
+                                <span>Always true</span>
+                            </div>
+                            <div class="rating-buttons" data-pillar="relational" data-question="9">
+                                <button type="button" class="rating-btn" data-value="1">1</button>
+                                <button type="button" class="rating-btn" data-value="2">2</button>
+                                <button type="button" class="rating-btn" data-value="3">3</button>
+                                <button type="button" class="rating-btn" data-value="4">4</button>
+                                <button type="button" class="rating-btn" data-value="5">5</button>
+                                <button type="button" class="rating-btn" data-value="6">6</button>
+                                <button type="button" class="rating-btn" data-value="7">7</button>
+                                <button type="button" class="rating-btn" data-value="8">8</button>
+                                <button type="button" class="rating-btn" data-value="9">9</button>
+                                <button type="button" class="rating-btn" data-value="10">10</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="pillar-summary" id="relational-summary">
+                        <div class="summary-score">0</div>
+                        <div class="summary-label">Relational Health Average</div>
+                        <div class="summary-status"></div>
+                    </div>
+                </div>
+
+                <!-- Vocational Health -->
+                <div class="pillar-section">
+                    <div class="pillar-header">
+                        <div class="pillar-icon" style="background: #20c997; color: white;">💼</div>
+                        <div class="pillar-title">
+                            <h3>Vocational Health</h3>
+                            <p>Finding purpose and mastery in your work</p>
+                        </div>
+                    </div>
+                    
+                    <div class="questions-grid">
+                        <div class="question-group" style="border-color: #20c997;">
+                            <p class="question">
+                                <span class="question-number">1</span>
+                                My work feels meaningful and makes a difference.
+                            </p>
+                            <div class="rating-labels">
+                                <span>Never true</span>
+                                <span>Always true</span>
+                            </div>
+                            <div class="rating-buttons" data-pillar="vocational" data-question="1">
+                                <button type="button" class="rating-btn" data-value="1">1</button>
+                                <button type="button" class="rating-btn" data-value="2">2</button>
+                                <button type="button" class="rating-btn" data-value="3">3</button>
+                                <button type="button" class="rating-btn" data-value="4">4</button>
+                                <button type="button" class="rating-btn" data-value="5">5</button>
+                                <button type="button" class="rating-btn" data-value="6">6</button>
+                                <button type="button" class="rating-btn" data-value="7">7</button>
+                                <button type="button" class="rating-btn" data-value="8">8</button>
+                                <button type="button" class="rating-btn" data-value="9">9</button>
+                                <button type="button" class="rating-btn" data-value="10">10</button>
+                            </div>
+                        </div>
+                        <div class="question-group" style="border-color: #20c997;">
+                            <p class="question">
+                                <span class="question-number">2</span>
+                                I use my natural talents and strengths in my daily work.
+                            </p>
+                            <div class="rating-labels">
+                                <span>Never true</span>
+                                <span>Always true</span>
+                            </div>
+                            <div class="rating-buttons" data-pillar="vocational" data-question="2">
+                                <button type="button" class="rating-btn" data-value="1">1</button>
+                                <button type="button" class="rating-btn" data-value="2">2</button>
+                                <button type="button" class="rating-btn" data-value="3">3</button>
+                                <button type="button" class="rating-btn" data-value="4">4</button>
+                                <button type="button" class="rating-btn" data-value="5">5</button>
+                                <button type="button" class="rating-btn" data-value="6">6</button>
+                                <button type="button" class="rating-btn" data-value="7">7</button>
+                                <button type="button" class="rating-btn" data-value="8">8</button>
+                                <button type="button" class="rating-btn" data-value="9">9</button>
+                                <button type="button" class="rating-btn" data-value="10">10</button>
+                            </div>
+                        </div>
+                        <div class="question-group" style="border-color: #20c997;">
+                            <p class="question">
+                                <span class="question-number">3</span>
+                                I work hard to improve my skills and become better at what I do.
+                            </p>
+                            <div class="rating-labels">
+                                <span>Never true</span>
+                                <span>Always true</span>
+                            </div>
+                            <div class="rating-buttons" data-pillar="vocational" data-question="3">
+                                <button type="button" class="rating-btn" data-value="1">1</button>
+                                <button type="button" class="rating-btn" data-value="2">2</button>
+                                <button type="button" class="rating-btn" data-value="3">3</button>
+                                <button type="button" class="rating-btn" data-value="4">4</button>
+                                <button type="button" class="rating-btn" data-value="5">5</button>
+                                <button type="button" class="rating-btn" data-value="6">6</button>
+                                <button type="button" class="rating-btn" data-value="7">7</button>
+                                <button type="button" class="rating-btn" data-value="8">8</button>
+                                <button type="button" class="rating-btn" data-value="9">9</button>
+                                <button type="button" class="rating-btn" data-value="10">10</button>
+                            </div>
+                        </div>
+                        <div class="question-group" style="border-color: #20c997;">
+                            <p class="question">
+                                <span class="question-number">4</span>
+                                I feel proud of the work I do and how I do it.
+                            </p>
+                            <div class="rating-labels">
+                                <span>Never true</span>
+                                <span>Always true</span>
+                            </div>
+                            <div class="rating-buttons" data-pillar="vocational" data-question="4">
+                                <button type="button" class="rating-btn" data-value="1">1</button>
+                                <button type="button" class="rating-btn" data-value="2">2</button>
+                                <button type="button" class="rating-btn" data-value="3">3</button>
+                                <button type="button" class="rating-btn" data-value="4">4</button>
+                                <button type="button" class="rating-btn" data-value="5">5</button>
+                                <button type="button" class="rating-btn" data-value="6">6</button>
+                                <button type="button" class="rating-btn" data-value="7">7</button>
+                                <button type="button" class="rating-btn" data-value="8">8</button>
+                                <button type="button" class="rating-btn" data-value="9">9</button>
+                                <button type="button" class="rating-btn" data-value="10">10</button>
+                            </div>
+                        </div>
+                        <div class="question-group" style="border-color: #20c997;">
+                            <p class="question">
+                                <span class="question-number">5</span>
+                                My work aligns with who I am and what I care about.
+                            </p>
+                            <div class="rating-labels">
+                                <span>Never true</span>
+                                <span>Always true</span>
+                            </div>
+                            <div class="rating-buttons" data-pillar="vocational" data-question="5">
+                                <button type="button" class="rating-btn" data-value="1">1</button>
+                                <button type="button" class="rating-btn" data-value="2">2</button>
+                                <button type="button" class="rating-btn" data-value="3">3</button>
+                                <button type="button" class="rating-btn" data-value="4">4</button>
+                                <button type="button" class="rating-btn" data-value="5">5</button>
+                                <button type="button" class="rating-btn" data-value="6">6</button>
+                                <button type="button" class="rating-btn" data-value="7">7</button>
+                                <button type="button" class="rating-btn" data-value="8">8</button>
+                                <button type="button" class="rating-btn" data-value="9">9</button>
+                                <button type="button" class="rating-btn" data-value="10">10</button>
+                            </div>
+                        </div>
+                        <div class="question-group" style="border-color: #20c997;">
+                            <p class="question">
+                                <span class="question-number">6</span>
+                                I complete my tasks with care and attention to quality.
+                            </p>
+                            <div class="rating-labels">
+                                <span>Never true</span>
+                                <span>Always true</span>
+                            </div>
+                            <div class="rating-buttons" data-pillar="vocational" data-question="6">
+                                <button type="button" class="rating-btn" data-value="1">1</button>
+                                <button type="button" class="rating-btn" data-value="2">2</button>
+                                <button type="button" class="rating-btn" data-value="3">3</button>
+                                <button type="button" class="rating-btn" data-value="4">4</button>
+                                <button type="button" class="rating-btn" data-value="5">5</button>
+                                <button type="button" class="rating-btn" data-value="6">6</button>
+                                <button type="button" class="rating-btn" data-value="7">7</button>
+                                <button type="button" class="rating-btn" data-value="8">8</button>
+                                <button type="button" class="rating-btn" data-value="9">9</button>
+                                <button type="button" class="rating-btn" data-value="10">10</button>
+                            </div>
+                        </div>
+                        <div class="question-group" style="border-color: #20c997;">
+                            <p class="question">
+                                <span class="question-number">7</span>
+                                I look forward to my work rather than dreading it.
+                            </p>
+                            <div class="rating-labels">
+                                <span>Never true</span>
+                                <span>Always true</span>
+                            </div>
+                            <div class="rating-buttons" data-pillar="vocational" data-question="7">
+                                <button type="button" class="rating-btn" data-value="1">1</button>
+                                <button type="button" class="rating-btn" data-value="2">2</button>
+                                <button type="button" class="rating-btn" data-value="3">3</button>
+                                <button type="button" class="rating-btn" data-value="4">4</button>
+                                <button type="button" class="rating-btn" data-value="5">5</button>
+                                <button type="button" class="rating-btn" data-value="6">6</button>
+                                <button type="button" class="rating-btn" data-value="7">7</button>
+                                <button type="button" class="rating-btn" data-value="8">8</button>
+                                <button type="button" class="rating-btn" data-value="9">9</button>
+                                <button type="button" class="rating-btn" data-value="10">10</button>
+                            </div>
+                        </div>
+                        <div class="question-group" style="border-color: #20c997;">
+                            <p class="question">
+                                <span class="question-number">8</span>
+                                My work contributes positively to the world or my community.
+                            </p>
+                            <div class="rating-labels">
+                                <span>Never true</span>
+                                <span>Always true</span>
+                            </div>
+                            <div class="rating-buttons" data-pillar="vocational" data-question="8">
+                                <button type="button" class="rating-btn" data-value="1">1</button>
+                                <button type="button" class="rating-btn" data-value="2">2</button>
+                                <button type="button" class="rating-btn" data-value="3">3</button>
+                                <button type="button" class="rating-btn" data-value="4">4</button>
+                                <button type="button" class="rating-btn" data-value="5">5</button>
+                                <button type="button" class="rating-btn" data-value="6">6</button>
+                                <button type="button" class="rating-btn" data-value="7">7</button>
+                                <button type="button" class="rating-btn" data-value="8">8</button>
+                                <button type="button" class="rating-btn" data-value="9">9</button>
+                                <button type="button" class="rating-btn" data-value="10">10</button>
+                            </div>
+                        </div>
+                        <div class="question-group" style="border-color: #20c997;">
+                            <p class="question">
+                                <span class="question-number">9</span>
+                                I'm growing and developing in my professional life.
+                            </p>
+                            <div class="rating-labels">
+                                <span>Never true</span>
+                                <span>Always true</span>
+                            </div>
+                            <div class="rating-buttons" data-pillar="vocational" data-question="9">
+                                <button type="button" class="rating-btn" data-value="1">1</button>
+                                <button type="button" class="rating-btn" data-value="2">2</button>
+                                <button type="button" class="rating-btn" data-value="3">3</button>
+                                <button type="button" class="rating-btn" data-value="4">4</button>
+                                <button type="button" class="rating-btn" data-value="5">5</button>
+                                <button type="button" class="rating-btn" data-value="6">6</button>
+                                <button type="button" class="rating-btn" data-value="7">7</button>
+                                <button type="button" class="rating-btn" data-value="8">8</button>
+                                <button type="button" class="rating-btn" data-value="9">9</button>
+                                <button type="button" class="rating-btn" data-value="10">10</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="pillar-summary" id="vocational-summary">
+                        <div class="summary-score">0</div>
+                        <div class="summary-label">Vocational Health Average</div>
+                        <div class="summary-status"></div>
+                    </div>
+                </div>
+
+                <!-- Environmental Health -->
+                <div class="pillar-section">
+                    <div class="pillar-header">
+                        <div class="pillar-icon" style="background: #37b24d; color: white;">🏡</div>
+                        <div class="pillar-title">
+                            <h3>Environmental Health</h3>
+                            <p>Creating order and harmony in your space</p>
+                        </div>
+                    </div>
+                    
+                    <div class="questions-grid">
+                        <div class="question-group" style="border-color: #37b24d;">
+                            <p class="question">
+                                <span class="question-number">1</span>
+                                My living space is clean, organized, and comfortable.
+                            </p>
+                            <div class="rating-labels">
+                                <span>Never true</span>
+                                <span>Always true</span>
+                            </div>
+                            <div class="rating-buttons" data-pillar="environmental" data-question="1">
+                                <button type="button" class="rating-btn" data-value="1">1</button>
+                                <button type="button" class="rating-btn" data-value="2">2</button>
+                                <button type="button" class="rating-btn" data-value="3">3</button>
+                                <button type="button" class="rating-btn" data-value="4">4</button>
+                                <button type="button" class="rating-btn" data-value="5">5</button>
+                                <button type="button" class="rating-btn" data-value="6">6</button>
+                                <button type="button" class="rating-btn" data-value="7">7</button>
+                                <button type="button" class="rating-btn" data-value="8">8</button>
+                                <button type="button" class="rating-btn" data-value="9">9</button>
+                                <button type="button" class="rating-btn" data-value="10">10</button>
+                            </div>
+                        </div>
+                        <div class="question-group" style="border-color: #37b24d;">
+                            <p class="question">
+                                <span class="question-number">2</span>
+                                I can find things easily because everything has its place.
+                            </p>
+                            <div class="rating-labels">
+                                <span>Never true</span>
+                                <span>Always true</span>
+                            </div>
+                            <div class="rating-buttons" data-pillar="environmental" data-question="2">
+                                <button type="button" class="rating-btn" data-value="1">1</button>
+                                <button type="button" class="rating-btn" data-value="2">2</button>
+                                <button type="button" class="rating-btn" data-value="3">3</button>
+                                <button type="button" class="rating-btn" data-value="4">4</button>
+                                <button type="button" class="rating-btn" data-value="5">5</button>
+                                <button type="button" class="rating-btn" data-value="6">6</button>
+                                <button type="button" class="rating-btn" data-value="7">7</button>
+                                <button type="button" class="rating-btn" data-value="8">8</button>
+                                <button type="button" class="rating-btn" data-value="9">9</button>
+                                <button type="button" class="rating-btn" data-value="10">10</button>
+                            </div>
+                        </div>
+                        <div class="question-group" style="border-color: #37b24d;">
+                            <p class="question">
+                                <span class="question-number">3</span>
+                                My workspace helps me focus and be productive.
+                            </p>
+                            <div class="rating-labels">
+                                <span>Never true</span>
+                                <span>Always true</span>
+                            </div>
+                            <div class="rating-buttons" data-pillar="environmental" data-question="3">
+                                <button type="button" class="rating-btn" data-value="1">1</button>
+                                <button type="button" class="rating-btn" data-value="2">2</button>
+                                <button type="button" class="rating-btn" data-value="3">3</button>
+                                <button type="button" class="rating-btn" data-value="4">4</button>
+                                <button type="button" class="rating-btn" data-value="5">5</button>
+                                <button type="button" class="rating-btn" data-value="6">6</button>
+                                <button type="button" class="rating-btn" data-value="7">7</button>
+                                <button type="button" class="rating-btn" data-value="8">8</button>
+                                <button type="button" class="rating-btn" data-value="9">9</button>
+                                <button type="button" class="rating-btn" data-value="10">10</button>
+                            </div>
+                        </div>
+                        <div class="question-group" style="border-color: #37b24d;">
+                            <p class="question">
+                                <span class="question-number">4</span>
+                                When my mind is clear, my space is organized; when confused, my space is messy.
+                            </p>
+                            <div class="rating-labels">
+                                <span>Never true</span>
+                                <span>Always true</span>
+                            </div>
+                            <div class="rating-buttons" data-pillar="environmental" data-question="4">
+                                <button type="button" class="rating-btn" data-value="1">1</button>
+                                <button type="button" class="rating-btn" data-value="2">2</button>
+                                <button type="button" class="rating-btn" data-value="3">3</button>
+                                <button type="button" class="rating-btn" data-value="4">4</button>
+                                <button type="button" class="rating-btn" data-value="5">5</button>
+                                <button type="button" class="rating-btn" data-value="6">6</button>
+                                <button type="button" class="rating-btn" data-value="7">7</button>
+                                <button type="button" class="rating-btn" data-value="8">8</button>
+                                <button type="button" class="rating-btn" data-value="9">9</button>
+                                <button type="button" class="rating-btn" data-value="10">10</button>
+                            </div>
+                        </div>
+                        <div class="question-group" style="border-color: #37b24d;">
+                            <p class="question">
+                                <span class="question-number">5</span>
+                                I regularly clean and maintain my living and working spaces.
+                            </p>
+                            <div class="rating-labels">
+                                <span>Never true</span>
+                                <span>Always true</span>
+                            </div>
+                            <div class="rating-buttons" data-pillar="environmental" data-question="5">
+                                <button type="button" class="rating-btn" data-value="1">1</button>
+                                <button type="button" class="rating-btn" data-value="2">2</button>
+                                <button type="button" class="rating-btn" data-value="3">3</button>
+                                <button type="button" class="rating-btn" data-value="4">4</button>
+                                <button type="button" class="rating-btn" data-value="5">5</button>
+                                <button type="button" class="rating-btn" data-value="6">6</button>
+                                <button type="button" class="rating-btn" data-value="7">7</button>
+                                <button type="button" class="rating-btn" data-value="8">8</button>
+                                <button type="button" class="rating-btn" data-value="9">9</button>
+                                <button type="button" class="rating-btn" data-value="10">10</button>
+                            </div>
+                        </div>
+                        <div class="question-group" style="border-color: #37b24d;">
+                            <p class="question">
+                                <span class="question-number">6</span>
+                                My environment feels peaceful and calming rather than chaotic.
+                            </p>
+                            <div class="rating-labels">
+                                <span>Never true</span>
+                                <span>Always true</span>
+                            </div>
+                            <div class="rating-buttons" data-pillar="environmental" data-question="6">
+                                <button type="button" class="rating-btn" data-value="1">1</button>
+                                <button type="button" class="rating-btn" data-value="2">2</button>
+                                <button type="button" class="rating-btn" data-value="3">3</button>
+                                <button type="button" class="rating-btn" data-value="4">4</button>
+                                <button type="button" class="rating-btn" data-value="5">5</button>
+                                <button type="button" class="rating-btn" data-value="6">6</button>
+                                <button type="button" class="rating-btn" data-value="7">7</button>
+                                <button type="button" class="rating-btn" data-value="8">8</button>
+                                <button type="button" class="rating-btn" data-value="9">9</button>
+                                <button type="button" class="rating-btn" data-value="10">10</button>
+                            </div>
+                        </div>
+                        <div class="question-group" style="border-color: #37b24d;">
+                            <p class="question">
+                                <span class="question-number">7</span>
+                                I take care of my belongings and fix things when they break.
+                            </p>
+                            <div class="rating-labels">
+                                <span>Never true</span>
+                                <span>Always true</span>
+                            </div>
+                            <div class="rating-buttons" data-pillar="environmental" data-question="7">
+                                <button type="button" class="rating-btn" data-value="1">1</button>
+                                <button type="button" class="rating-btn" data-value="2">2</button>
+                                <button type="button" class="rating-btn" data-value="3">3</button>
+                                <button type="button" class="rating-btn" data-value="4">4</button>
+                                <button type="button" class="rating-btn" data-value="5">5</button>
+                                <button type="button" class="rating-btn" data-value="6">6</button>
+                                <button type="button" class="rating-btn" data-value="7">7</button>
+                                <button type="button" class="rating-btn" data-value="8">8</button>
+                                <button type="button" class="rating-btn" data-value="9">9</button>
+                                <button type="button" class="rating-btn" data-value="10">10</button>
+                            </div>
+                        </div>
+                        <div class="question-group" style="border-color: #37b24d;">
+                            <p class="question">
+                                <span class="question-number">8</span>
+                                My home feels like a sanctuary that supports my wellbeing.
+                            </p>
+                            <div class="rating-labels">
+                                <span>Never true</span>
+                                <span>Always true</span>
+                            </div>
+                            <div class="rating-buttons" data-pillar="environmental" data-question="8">
+                                <button type="button" class="rating-btn" data-value="1">1</button>
+                                <button type="button" class="rating-btn" data-value="2">2</button>
+                                <button type="button" class="rating-btn" data-value="3">3</button>
+                                <button type="button" class="rating-btn" data-value="4">4</button>
+                                <button type="button" class="rating-btn" data-value="5">5</button>
+                                <button type="button" class="rating-btn" data-value="6">6</button>
+                                <button type="button" class="rating-btn" data-value="7">7</button>
+                                <button type="button" class="rating-btn" data-value="8">8</button>
+                                <button type="button" class="rating-btn" data-value="9">9</button>
+                                <button type="button" class="rating-btn" data-value="10">10</button>
+                            </div>
+                        </div>
+                        <div class="question-group" style="border-color: #37b24d;">
+                            <p class="question">
+                                <span class="question-number">9</span>
+                                I feel proud to invite people into my space.
+                            </p>
+                            <div class="rating-labels">
+                                <span>Never true</span>
+                                <span>Always true</span>
+                            </div>
+                            <div class="rating-buttons" data-pillar="environmental" data-question="9">
+                                <button type="button" class="rating-btn" data-value="1">1</button>
+                                <button type="button" class="rating-btn" data-value="2">2</button>
+                                <button type="button" class="rating-btn" data-value="3">3</button>
+                                <button type="button" class="rating-btn" data-value="4">4</button>
+                                <button type="button" class="rating-btn" data-value="5">5</button>
+                                <button type="button" class="rating-btn" data-value="6">6</button>
+                                <button type="button" class="rating-btn" data-value="7">7</button>
+                                <button type="button" class="rating-btn" data-value="8">8</button>
+                                <button type="button" class="rating-btn" data-value="9">9</button>
+                                <button type="button" class="rating-btn" data-value="10">10</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="pillar-summary" id="environmental-summary">
+                        <div class="summary-score">0</div>
+                        <div class="summary-label">Environmental Health Average</div>
+                        <div class="summary-status"></div>
+                    </div>
+                </div>
+
+                <!-- Financial Health -->
+                <div class="pillar-section">
+                    <div class="pillar-header">
+                        <div class="pillar-icon" style="background: #ffd43b; color: white;">💰</div>
+                        <div class="pillar-title">
+                            <h3>Financial Health</h3>
+                            <p>Managing your resources wisely</p>
+                        </div>
+                    </div>
+                    
+                    <div class="questions-grid">
+                        <div class="question-group" style="border-color: #ffd43b;">
+                            <p class="question">
+                                <span class="question-number">1</span>
+                                I use my time wisely and avoid wasting it on unimportant things.
+                            </p>
+                            <div class="rating-labels">
+                                <span>Never true</span>
+                                <span>Always true</span>
+                            </div>
+                            <div class="rating-buttons" data-pillar="financial" data-question="1">
+                                <button type="button" class="rating-btn" data-value="1">1</button>
+                                <button type="button" class="rating-btn" data-value="2">2</button>
+                                <button type="button" class="rating-btn" data-value="3">3</button>
+                                <button type="button" class="rating-btn" data-value="4">4</button>
+                                <button type="button" class="rating-btn" data-value="5">5</button>
+                                <button type="button" class="rating-btn" data-value="6">6</button>
+                                <button type="button" class="rating-btn" data-value="7">7</button>
+                                <button type="button" class="rating-btn" data-value="8">8</button>
+                                <button type="button" class="rating-btn" data-value="9">9</button>
+                                <button type="button" class="rating-btn" data-value="10">10</button>
+                            </div>
+                        </div>
+                        <div class="question-group" style="border-color: #ffd43b;">
+                            <p class="question">
+                                <span class="question-number">2</span>
+                                I know where my money goes and spend it intentionally.
+                            </p>
+                            <div class="rating-labels">
+                                <span>Never true</span>
+                                <span>Always true</span>
+                            </div>
+                            <div class="rating-buttons" data-pillar="financial" data-question="2">
+                                <button type="button" class="rating-btn" data-value="1">1</button>
+                                <button type="button" class="rating-btn" data-value="2">2</button>
+                                <button type="button" class="rating-btn" data-value="3">3</button>
+                                <button type="button" class="rating-btn" data-value="4">4</button>
+                                <button type="button" class="rating-btn" data-value="5">5</button>
+                                <button type="button" class="rating-btn" data-value="6">6</button>
+                                <button type="button" class="rating-btn" data-value="7">7</button>
+                                <button type="button" class="rating-btn" data-value="8">8</button>
+                                <button type="button" class="rating-btn" data-value="9">9</button>
+                                <button type="button" class="rating-btn" data-value="10">10</button>
+                            </div>
+                        </div>
+                        <div class="question-group" style="border-color: #ffd43b;">
+                            <p class="question">
+                                <span class="question-number">3</span>
+                                I save money regularly for future needs and goals.
+                            </p>
+                            <div class="rating-labels">
+                                <span>Never true</span>
+                                <span>Always true</span>
+                            </div>
+                            <div class="rating-buttons" data-pillar="financial" data-question="3">
+                                <button type="button" class="rating-btn" data-value="1">1</button>
+                                <button type="button" class="rating-btn" data-value="2">2</button>
+                                <button type="button" class="rating-btn" data-value="3">3</button>
+                                <button type="button" class="rating-btn" data-value="4">4</button>
+                                <button type="button" class="rating-btn" data-value="5">5</button>
+                                <button type="button" class="rating-btn" data-value="6">6</button>
+                                <button type="button" class="rating-btn" data-value="7">7</button>
+                                <button type="button" class="rating-btn" data-value="8">8</button>
+                                <button type="button" class="rating-btn" data-value="9">9</button>
+                                <button type="button" class="rating-btn" data-value="10">10</button>
+                            </div>
+                        </div>
+                        <div class="question-group" style="border-color: #ffd43b;">
+                            <p class="question">
+                                <span class="question-number">4</span>
+                                I manage my energy well, knowing when to push and when to rest.
+                            </p>
+                            <div class="rating-labels">
+                                <span>Never true</span>
+                                <span>Always true</span>
+                            </div>
+                            <div class="rating-buttons" data-pillar="financial" data-question="4">
+                                <button type="button" class="rating-btn" data-value="1">1</button>
+                                <button type="button" class="rating-btn" data-value="2">2</button>
+                                <button type="button" class="rating-btn" data-value="3">3</button>
+                                <button type="button" class="rating-btn" data-value="4">4</button>
+                                <button type="button" class="rating-btn" data-value="5">5</button>
+                                <button type="button" class="rating-btn" data-value="6">6</button>
+                                <button type="button" class="rating-btn" data-value="7">7</button>
+                                <button type="button" class="rating-btn" data-value="8">8</button>
+                                <button type="button" class="rating-btn" data-value="9">9</button>
+                                <button type="button" class="rating-btn" data-value="10">10</button>
+                            </div>
+                        </div>
+                        <div class="question-group" style="border-color: #ffd43b;">
+                            <p class="question">
+                                <span class="question-number">5</span>
+                                I can afford the things I need and some of what I want.
+                            </p>
+                            <div class="rating-labels">
+                                <span>Never true</span>
+                                <span>Always true</span>
+                            </div>
+                            <div class="rating-buttons" data-pillar="financial" data-question="5">
+                                <button type="button" class="rating-btn" data-value="1">1</button>
+                                <button type="button" class="rating-btn" data-value="2">2</button>
+                                <button type="button" class="rating-btn" data-value="3">3</button>
+                                <button type="button" class="rating-btn" data-value="4">4</button>
+                                <button type="button" class="rating-btn" data-value="5">5</button>
+                                <button type="button" class="rating-btn" data-value="6">6</button>
+                                <button type="button" class="rating-btn" data-value="7">7</button>
+                                <button type="button" class="rating-btn" data-value="8">8</button>
+                                <button type="button" class="rating-btn" data-value="9">9</button>
+                                <button type="button" class="rating-btn" data-value="10">10</button>
+                            </div>
+                        </div>
+                        <div class="question-group" style="border-color: #ffd43b;">
+                            <p class="question">
+                                <span class="question-number">6</span>
+                                I invest my resources in things that help me grow and thrive.
+                            </p>
+                            <div class="rating-labels">
+                                <span>Never true</span>
+                                <span>Always true</span>
+                            </div>
+                            <div class="rating-buttons" data-pillar="financial" data-question="6">
+                                <button type="button" class="rating-btn" data-value="1">1</button>
+                                <button type="button" class="rating-btn" data-value="2">2</button>
+                                <button type="button" class="rating-btn" data-value="3">3</button>
+                                <button type="button" class="rating-btn" data-value="4">4</button>
+                                <button type="button" class="rating-btn" data-value="5">5</button>
+                                <button type="button" class="rating-btn" data-value="6">6</button>
+                                <button type="button" class="rating-btn" data-value="7">7</button>
+                                <button type="button" class="rating-btn" data-value="8">8</button>
+                                <button type="button" class="rating-btn" data-value="9">9</button>
+                                <button type="button" class="rating-btn" data-value="10">10</button>
+                            </div>
+                        </div>
+                        <div class="question-group" style="border-color: #ffd43b;">
+                            <p class="question">
+                                <span class="question-number">7</span>
+                                I avoid wasting money, time, or energy on things that don't matter.
+                            </p>
+                            <div class="rating-labels">
+                                <span>Never true</span>
+                                <span>Always true</span>
+                            </div>
+                            <div class="rating-buttons" data-pillar="financial" data-question="7">
+                                <button type="button" class="rating-btn" data-value="1">1</button>
+                                <button type="button" class="rating-btn" data-value="2">2</button>
+                                <button type="button" class="rating-btn" data-value="3">3</button>
+                                <button type="button" class="rating-btn" data-value="4">4</button>
+                                <button type="button" class="rating-btn" data-value="5">5</button>
+                                <button type="button" class="rating-btn" data-value="6">6</button>
+                                <button type="button" class="rating-btn" data-value="7">7</button>
+                                <button type="button" class="rating-btn" data-value="8">8</button>
+                                <button type="button" class="rating-btn" data-value="9">9</button>
+                                <button type="button" class="rating-btn" data-value="10">10</button>
+                            </div>
+                        </div>
+                        <div class="question-group" style="border-color: #ffd43b;">
+                            <p class="question">
+                                <span class="question-number">8</span>
+                                I feel secure about my financial situation rather than constantly worried.
+                            </p>
+                            <div class="rating-labels">
+                                <span>Never true</span>
+                                <span>Always true</span>
+                            </div>
+                            <div class="rating-buttons" data-pillar="financial" data-question="8">
+                                <button type="button" class="rating-btn" data-value="1">1</button>
+                                <button type="button" class="rating-btn" data-value="2">2</button>
+                                <button type="button" class="rating-btn" data-value="3">3</button>
+                                <button type="button" class="rating-btn" data-value="4">4</button>
+                                <button type="button" class="rating-btn" data-value="5">5</button>
+                                <button type="button" class="rating-btn" data-value="6">6</button>
+                                <button type="button" class="rating-btn" data-value="7">7</button>
+                                <button type="button" class="rating-btn" data-value="8">8</button>
+                                <button type="button" class="rating-btn" data-value="9">9</button>
+                                <button type="button" class="rating-btn" data-value="10">10</button>
+                            </div>
+                        </div>
+                        <div class="question-group" style="border-color: #ffd43b;">
+                            <p class="question">
+                                <span class="question-number">9</span>
+                                My resources (time, money, energy) support my ability to pursue my dreams.
+                            </p>
+                            <div class="rating-labels">
+                                <span>Never true</span>
+                                <span>Always true</span>
+                            </div>
+                            <div class="rating-buttons" data-pillar="financial" data-question="9">
+                                <button type="button" class="rating-btn" data-value="1">1</button>
+                                <button type="button" class="rating-btn" data-value="2">2</button>
+                                <button type="button" class="rating-btn" data-value="3">3</button>
+                                <button type="button" class="rating-btn" data-value="4">4</button>
+                                <button type="button" class="rating-btn" data-value="5">5</button>
+                                <button type="button" class="rating-btn" data-value="6">6</button>
+                                <button type="button" class="rating-btn" data-value="7">7</button>
+                                <button type="button" class="rating-btn" data-value="8">8</button>
+                                <button type="button" class="rating-btn" data-value="9">9</button>
+                                <button type="button" class="rating-btn" data-value="10">10</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="pillar-summary" id="financial-summary">
+                        <div class="summary-score">0</div>
+                        <div class="summary-label">Financial Health Average</div>
+                        <div class="summary-status"></div>
+                    </div>
+                </div>
+
+                <!-- Recreational Health -->
+                <div class="pillar-section">
+                    <div class="pillar-header">
+                        <div class="pillar-icon" style="background: #e64980; color: white;">🎨</div>
+                        <div class="pillar-title">
+                            <h3>Recreational Health</h3>
+                            <p>Making time for joy, play, and fun</p>
+                        </div>
+                    </div>
+                    
+                    <div class="questions-grid">
+                        <div class="question-group" style="border-color: #e64980;">
+                            <p class="question">
+                                <span class="question-number">1</span>
+                                I regularly do things just because they're fun.
+                            </p>
+                            <div class="rating-labels">
+                                <span>Never true</span>
+                                <span>Always true</span>
+                            </div>
+                            <div class="rating-buttons" data-pillar="recreational" data-question="1">
+                                <button type="button" class="rating-btn" data-value="1">1</button>
+                                <button type="button" class="rating-btn" data-value="2">2</button>
+                                <button type="button" class="rating-btn" data-value="3">3</button>
+                                <button type="button" class="rating-btn" data-value="4">4</button>
+                                <button type="button" class="rating-btn" data-value="5">5</button>
+                                <button type="button" class="rating-btn" data-value="6">6</button>
+                                <button type="button" class="rating-btn" data-value="7">7</button>
+                                <button type="button" class="rating-btn" data-value="8">8</button>
+                                <button type="button" class="rating-btn" data-value="9">9</button>
+                                <button type="button" class="rating-btn" data-value="10">10</button>
+                            </div>
+                        </div>
+                        <div class="question-group" style="border-color: #e64980;">
+                            <p class="question">
+                                <span class="question-number">2</span>
+                                I laugh and smile frequently throughout my days.
+                            </p>
+                            <div class="rating-labels">
+                                <span>Never true</span>
+                                <span>Always true</span>
+                            </div>
+                            <div class="rating-buttons" data-pillar="recreational" data-question="2">
+                                <button type="button" class="rating-btn" data-value="1">1</button>
+                                <button type="button" class="rating-btn" data-value="2">2</button>
+                                <button type="button" class="rating-btn" data-value="3">3</button>
+                                <button type="button" class="rating-btn" data-value="4">4</button>
+                                <button type="button" class="rating-btn" data-value="5">5</button>
+                                <button type="button" class="rating-btn" data-value="6">6</button>
+                                <button type="button" class="rating-btn" data-value="7">7</button>
+                                <button type="button" class="rating-btn" data-value="8">8</button>
+                                <button type="button" class="rating-btn" data-value="9">9</button>
+                                <button type="button" class="rating-btn" data-value="10">10</button>
+                            </div>
+                        </div>
+                        <div class="question-group" style="border-color: #e64980;">
+                            <p class="question">
+                                <span class="question-number">3</span>
+                                I try new experiences that excite and interest me.
+                            </p>
+                            <div class="rating-labels">
+                                <span>Never true</span>
+                                <span>Always true</span>
+                            </div>
+                            <div class="rating-buttons" data-pillar="recreational" data-question="3">
+                                <button type="button" class="rating-btn" data-value="1">1</button>
+                                <button type="button" class="rating-btn" data-value="2">2</button>
+                                <button type="button" class="rating-btn" data-value="3">3</button>
+                                <button type="button" class="rating-btn" data-value="4">4</button>
+                                <button type="button" class="rating-btn" data-value="5">5</button>
+                                <button type="button" class="rating-btn" data-value="6">6</button>
+                                <button type="button" class="rating-btn" data-value="7">7</button>
+                                <button type="button" class="rating-btn" data-value="8">8</button>
+                                <button type="button" class="rating-btn" data-value="9">9</button>
+                                <button type="button" class="rating-btn" data-value="10">10</button>
+                            </div>
+                        </div>
+                        <div class="question-group" style="border-color: #e64980;">
+                            <p class="question">
+                                <span class="question-number">4</span>
+                                I have hobbies or activities that bring me pure joy.
+                            </p>
+                            <div class="rating-labels">
+                                <span>Never true</span>
+                                <span>Always true</span>
+                            </div>
+                            <div class="rating-buttons" data-pillar="recreational" data-question="4">
+                                <button type="button" class="rating-btn" data-value="1">1</button>
+                                <button type="button" class="rating-btn" data-value="2">2</button>
+                                <button type="button" class="rating-btn" data-value="3">3</button>
+                                <button type="button" class="rating-btn" data-value="4">4</button>
+                                <button type="button" class="rating-btn" data-value="5">5</button>
+                                <button type="button" class="rating-btn" data-value="6">6</button>
+                                <button type="button" class="rating-btn" data-value="7">7</button>
+                                <button type="button" class="rating-btn" data-value="8">8</button>
+                                <button type="button" class="rating-btn" data-value="9">9</button>
+                                <button type="button" class="rating-btn" data-value="10">10</button>
+                            </div>
+                        </div>
+                        <div class="question-group" style="border-color: #e64980;">
+                            <p class="question">
+                                <span class="question-number">5</span>
+                                I make time to relax and do nothing without feeling guilty.
+                            </p>
+                            <div class="rating-labels">
+                                <span>Never true</span>
+                                <span>Always true</span>
+                            </div>
+                            <div class="rating-buttons" data-pillar="recreational" data-question="5">
+                                <button type="button" class="rating-btn" data-value="1">1</button>
+                                <button type="button" class="rating-btn" data-value="2">2</button>
+                                <button type="button" class="rating-btn" data-value="3">3</button>
+                                <button type="button" class="rating-btn" data-value="4">4</button>
+                                <button type="button" class="rating-btn" data-value="5">5</button>
+                                <button type="button" class="rating-btn" data-value="6">6</button>
+                                <button type="button" class="rating-btn" data-value="7">7</button>
+                                <button type="button" class="rating-btn" data-value="8">8</button>
+                                <button type="button" class="rating-btn" data-value="9">9</button>
+                                <button type="button" class="rating-btn" data-value="10">10</button>
+                            </div>
+                        </div>
+                        <div class="question-group" style="border-color: #e64980;">
+                            <p class="question">
+                                <span class="question-number">6</span>
+                                I still feel a sense of wonder and curiosity about life.
+                            </p>
+                            <div class="rating-labels">
+                                <span>Never true</span>
+                                <span>Always true</span>
+                            </div>
+                            <div class="rating-buttons" data-pillar="recreational" data-question="6">
+                                <button type="button" class="rating-btn" data-value="1">1</button>
+                                <button type="button" class="rating-btn" data-value="2">2</button>
+                                <button type="button" class="rating-btn" data-value="3">3</button>
+                                <button type="button" class="rating-btn" data-value="4">4</button>
+                                <button type="button" class="rating-btn" data-value="5">5</button>
+                                <button type="button" class="rating-btn" data-value="6">6</button>
+                                <button type="button" class="rating-btn" data-value="7">7</button>
+                                <button type="button" class="rating-btn" data-value="8">8</button>
+                                <button type="button" class="rating-btn" data-value="9">9</button>
+                                <button type="button" class="rating-btn" data-value="10">10</button>
+                            </div>
+                        </div>
+                        <div class="question-group" style="border-color: #e64980;">
+                            <p class="question">
+                                <span class="question-number">7</span>
+                                I play and have fun without worrying about being productive.
+                            </p>
+                            <div class="rating-labels">
+                                <span>Never true</span>
+                                <span>Always true</span>
+                            </div>
+                            <div class="rating-buttons" data-pillar="recreational" data-question="7">
+                                <button type="button" class="rating-btn" data-value="1">1</button>
+                                <button type="button" class="rating-btn" data-value="2">2</button>
+                                <button type="button" class="rating-btn" data-value="3">3</button>
+                                <button type="button" class="rating-btn" data-value="4">4</button>
+                                <button type="button" class="rating-btn" data-value="5">5</button>
+                                <button type="button" class="rating-btn" data-value="6">6</button>
+                                <button type="button" class="rating-btn" data-value="7">7</button>
+                                <button type="button" class="rating-btn" data-value="8">8</button>
+                                <button type="button" class="rating-btn" data-value="9">9</button>
+                                <button type="button" class="rating-btn" data-value="10">10</button>
+                            </div>
+                        </div>
+                        <div class="question-group" style="border-color: #e64980;">
+                            <p class="question">
+                                <span class="question-number">8</span>
+                                I have adventures (big or small) that create happy memories.
+                            </p>
+                            <div class="rating-labels">
+                                <span>Never true</span>
+                                <span>Always true</span>
+                            </div>
+                            <div class="rating-buttons" data-pillar="recreational" data-question="8">
+                                <button type="button" class="rating-btn" data-value="1">1</button>
+                                <button type="button" class="rating-btn" data-value="2">2</button>
+                                <button type="button" class="rating-btn" data-value="3">3</button>
+                                <button type="button" class="rating-btn" data-value="4">4</button>
+                                <button type="button" class="rating-btn" data-value="5">5</button>
+                                <button type="button" class="rating-btn" data-value="6">6</button>
+                                <button type="button" class="rating-btn" data-value="7">7</button>
+                                <button type="button" class="rating-btn" data-value="8">8</button>
+                                <button type="button" class="rating-btn" data-value="9">9</button>
+                                <button type="button" class="rating-btn" data-value="10">10</button>
+                            </div>
+                        </div>
+                        <div class="question-group" style="border-color: #e64980;">
+                            <p class="question">
+                                <span class="question-number">9</span>
+                                I balance exciting activities with peaceful, relaxing ones.
+                            </p>
+                            <div class="rating-labels">
+                                <span>Never true</span>
+                                <span>Always true</span>
+                            </div>
+                            <div class="rating-buttons" data-pillar="recreational" data-question="9">
+                                <button type="button" class="rating-btn" data-value="1">1</button>
+                                <button type="button" class="rating-btn" data-value="2">2</button>
+                                <button type="button" class="rating-btn" data-value="3">3</button>
+                                <button type="button" class="rating-btn" data-value="4">4</button>
+                                <button type="button" class="rating-btn" data-value="5">5</button>
+                                <button type="button" class="rating-btn" data-value="6">6</button>
+                                <button type="button" class="rating-btn" data-value="7">7</button>
+                                <button type="button" class="rating-btn" data-value="8">8</button>
+                                <button type="button" class="rating-btn" data-value="9">9</button>
+                                <button type="button" class="rating-btn" data-value="10">10</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="pillar-summary" id="recreational-summary">
+                        <div class="summary-score">0</div>
+                        <div class="summary-label">Recreational Health Average</div>
+                        <div class="summary-status"></div>
+                    </div>
+                </div>
+                
+                <div class="submit-section">
+                    <button type="submit" class="submit-btn" id="submitBtn">Generate My Complete Assessment</button>
+                </div>
+            </form>
+            
+            <div id="results" class="results">
+                <h2>Your 9 Pillars Assessment Results</h2>
+                
+                <div class="overall-score">
+                    <div class="score-display" id="overallScore">0</div>
+                    <div class="score-label">Overall Life Health Score</div>
+                </div>
+                
+                <div class="detailed-results" id="detailedResults"></div>
+                
+                <div class="insights-section">
+                    <h3>Personal Insights</h3>
+                    
+                    <div class="insight-category">
+                        <h4>Your Strongest Pillars</h4>
+                        <ul class="insight-list" id="strengthsList"></ul>
+                    </div>
+                    
+                    <div class="insight-category">
+                        <h4>Areas for Growth</h4>
+                        <ul class="insight-list" id="growthList"></ul>
+                    </div>
+                    
+                    <div class="insight-category">
+                        <h4>Balance Analysis</h4>
+                        <ul class="insight-list" id="balanceList"></ul>
+                    </div>
+                    
+                    <div class="insight-category">
+                        <h4>Key Patterns</h4>
+                        <ul class="insight-list" id="patternsList"></ul>
+                    </div>
+                </div>
+                
+                <div class="action-plan">
+                    <h3>Your Personalized Action Plan</h3>
+                    <div id="actionPlan"></div>
+                    
+                    <center>
+                        <button class="save-results-btn" onclick="window.print()">Save/Print Results</button>
+                    </center>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Initialize tracking
+        let totalQuestions = 81;
+        let answeredQuestions = 0;
+        let pillarScores = {};
+        
+        // Pillar information
+        const pillarInfo = {
+            physical: { name: 'Physical Health', icon: '💪', color: '#ff6b6b' },
+            spiritual: { name: 'Spiritual Health', icon: '🧘', color: '#4c6ef5' },
+            mental: { name: 'Mental Health', icon: '🧠', color: '#15aabf' },
+            emotional: { name: 'Emotional Health', icon: '❤️', color: '#fa5252' },
+            relational: { name: 'Relational Health', icon: '🤝', color: '#fd7e14' },
+            vocational: { name: 'Vocational Health', icon: '💼', color: '#20c997' },
+            environmental: { name: 'Environmental Health', icon: '🏡', color: '#37b24d' },
+            financial: { name: 'Financial Health', icon: '💰', color: '#ffd43b' },
+            recreational: { name: 'Recreational Health', icon: '🎨', color: '#e64980' }
+        };
+        
+        // Initialize pillar scores
+        Object.keys(pillarInfo).forEach(pillar => {
+            pillarScores[pillar] = new Array(9).fill(null);
+        });
+        
+        // Update progress
+        function updateProgress() {
+            answeredQuestions = 0;
+            Object.values(pillarScores).forEach(scores => {
+                answeredQuestions += scores.filter(s => s !== null).length;
+            });
+            
+            const percentage = (answeredQuestions / totalQuestions) * 100;
+            document.getElementById('progressFill').style.width = percentage + '%';
+            document.getElementById('progressText').textContent = `${answeredQuestions} of ${totalQuestions} questions answered`;
+            
+            // Enable/disable submit button
+            document.getElementById('submitBtn').disabled = answeredQuestions < totalQuestions;
+        }
+        
+        // Handle rating button clicks
+        document.querySelectorAll('.rating-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const container = this.parentElement;
+                const pillar = container.dataset.pillar;
+                const question = parseInt(container.dataset.question) - 1;
+                const value = parseInt(this.dataset.value);
+                
+                // Remove previous selection
+                container.querySelectorAll('.rating-btn').forEach(btn => {
+                    btn.classList.remove('selected');
+                });
+                this.classList.add('selected');
+                
+                // Update scores
+                pillarScores[pillar][question] = value;
+                
+                // Update pillar summary if all questions answered
+                const pillarComplete = pillarScores[pillar].every(s => s !== null);
+                if (pillarComplete) {
+                    const average = pillarScores[pillar].reduce((a, b) => a + b, 0) / 9;
+                    const summaryDiv = document.getElementById(`${pillar}-summary`);
+                    summaryDiv.querySelector('.summary-score').textContent = average.toFixed(1);
+                    
+                    // Add status class
+                    const statusDiv = summaryDiv.querySelector('.summary-status');
+                    if (average >= 8) {
+                        statusDiv.textContent = 'Excellent';
+                        statusDiv.className = 'summary-status status-excellent';
+                    } else if (average >= 6) {
+                        statusDiv.textContent = 'Good';
+                        statusDiv.className = 'summary-status status-good';
+                    } else {
+                        statusDiv.textContent = 'Needs Attention';
+                        statusDiv.className = 'summary-status status-needs-work';
+                    }
+                    
+                    summaryDiv.classList.add('show');
+                }
+                
+                updateProgress();
+            });
+        });
+        
+        // Handle form submission
+        document.getElementById('assessmentForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Calculate averages
+            const averages = {};
+            Object.keys(pillarScores).forEach(pillar => {
+                const scores = pillarScores[pillar];
+                averages[pillar] = scores.reduce((a, b) => a + b, 0) / 9;
+            });
+            
+            // Calculate overall score
+            const overallScore = Object.values(averages).reduce((a, b) => a + b, 0) / 9;
+            
+            // Display overall score
+            document.getElementById('overallScore').textContent = overallScore.toFixed(1);
+            
+            // Create detailed results cards
+            const detailedResultsHtml = Object.entries(averages)
+                .map(([pillar, score]) => {
+                    const percentage = (score / 10) * 100;
+                    const info = pillarInfo[pillar];
+                    return `
+                        <div class="pillar-result-card">
+                            <div class="pillar-result-header">
+                                <div class="pillar-result-icon" style="background: ${info.color}; color: white;">
+                                    ${info.icon}
+                                </div>
+                                <div class="pillar-result-name">${info.name}</div>
+                            </div>
+                            <div class="pillar-result-score">
+                                <div class="score-circle">${score.toFixed(1)}</div>
+                            </div>
+                            <div class="score-bar">
+                                <div class="score-fill" style="width: ${percentage}%"></div>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+            
+            document.getElementById('detailedResults').innerHTML = detailedResultsHtml;
+            
+            // Generate insights
+            generateInsights(averages, pillarScores);
+            
+            // Generate action plan
+            generateActionPlan(averages);
+            
+            // Show results
+            document.getElementById('results').style.display = 'block';
+            document.getElementById('results').scrollIntoView({ behavior: 'smooth' });
+        });
+        
+        function generateInsights(averages, allScores) {
+            // Strengths
+            const strengths = [];
+            Object.entries(averages).forEach(([pillar, score]) => {
+                if (score >= 8) {
+                    strengths.push(`<li class="insight-item"><strong>${pillarInfo[pillar].name}</strong> (${score.toFixed(1)}/10): This pillar is thriving and serves as a strong foundation.</li>`);
+                } else if (score >= 7) {
+                    strengths.push(`<li class="insight-item"><strong>${pillarInfo[pillar].name}</strong> (${score.toFixed(1)}/10): Well-developed area supporting your overall wellbeing.</li>`);
+                }
+            });
+            
+            if (strengths.length === 0) {
+                strengths.push('<li class="insight-item">While no pillars are currently in the excellent range, every pillar has potential for growth.</li>');
+            }
+            document.getElementById('strengthsList').innerHTML = strengths.join('');
+            
+            // Growth areas
+            const growth = [];
+            Object.entries(averages).forEach(([pillar, score]) => {
+                if (score < 5) {
+                    growth.push(`<li class="insight-item"><strong>${pillarInfo[pillar].name}</strong> (${score.toFixed(1)}/10): Priority area requiring immediate attention and care.</li>`);
+                } else if (score < 6.5) {
+                    growth.push(`<li class="insight-item"><strong>${pillarInfo[pillar].name}</strong> (${score.toFixed(1)}/10): Important area for development and strengthening.</li>`);
+                }
+            });
+            
+            if (growth.length === 0) {
+                growth.push('<li class="insight-item">All pillars show healthy development. Focus on elevating good to great.</li>');
+            }
+            document.getElementById('growthList').innerHTML = growth.join('');
+            
+            // Balance analysis
+            const balance = [];
+            const scores = Object.values(averages);
+            const variance = Math.max(...scores) - Math.min(...scores);
+            
+            if (variance > 5) {
+                balance.push(`<li class="insight-item"><strong>Significant imbalance detected:</strong> ${variance.toFixed(1)} point spread between highest and lowest pillars.</li>`);
+                balance.push('<li class="insight-item">This imbalance may create stress. Focus on strengthening weaker areas while maintaining strengths.</li>');
+            } else if (variance > 3) {
+                balance.push(`<li class="insight-item"><strong>Moderate imbalance:</strong> ${variance.toFixed(1)} point spread suggests some areas need more attention.</li>`);
+            } else {
+                balance.push(`<li class="insight-item"><strong>Good balance:</strong> Only ${variance.toFixed(1)} point spread shows consistent development.</li>`);
+            }
+            document.getElementById('balanceList').innerHTML = balance.join('');
+            
+            // Patterns
+            const patterns = [];
+            
+            // Check for mind-body connection
+            if (averages.physical < 5 && averages.mental < 5) {
+                patterns.push('<li class="insight-item"><strong>Mind-Body Connection:</strong> Low physical and mental scores often influence each other. Improving one can boost the other.</li>');
+            }
+            
+            // Check for purpose alignment
+            if (averages.spiritual < 5 && averages.vocational < 5) {
+                patterns.push('<li class="insight-item"><strong>Purpose Alignment:</strong> Your spiritual and vocational scores suggest exploring your life purpose and values.</li>');
+            }
+            
+            // Check for environment-mind correlation
+            if (averages.environmental < 5 && averages.mental < 5) {
+                patterns.push('<li class="insight-item"><strong>Space-Mind Link:</strong> Your environment reflects inner state. Organizing space can clarify thinking.</li>');
+            }
+            
+            // Check for energy management
+            if (averages.recreational < 5 && averages.emotional < 5) {
+                patterns.push('<li class="insight-item"><strong>Joy Deficit:</strong> Low recreational and emotional scores suggest need for more play and emotional expression.</li>');
+            }
+            
+            if (patterns.length === 0) {
+                patterns.push('<li class="insight-item">Your pillars show independent strength. Continue balanced development across all areas.</li>');
+            }
+            document.getElementById('patternsList').innerHTML = patterns.join('');
+        }
+        
+        function generateActionPlan(averages) {
+            const actionPlan = document.getElementById('actionPlan');
+            const sortedPillars = Object.entries(averages).sort((a, b) => a[1] - b[1]);
+            
+            let planHTML = '<div class="action-items">';
+            
+            // Generate actions for each pillar based on score
+            sortedPillars.forEach(([pillar, score]) => {
+                const info = pillarInfo[pillar];
+                let priority = 'low';
+                let actions = '';
+                
+                if (score < 5) {
+                    priority = 'high';
+                    actions = getDetailedActions(pillar, 'high');
+                } else if (score < 7) {
+                    priority = 'medium';
+                    actions = getDetailedActions(pillar, 'medium');
+                } else {
+                    priority = 'low';
+                    actions = 'Continue current practices. Consider mentoring others.';
+                }
+                
+                planHTML += `
+                    <div class="action-item">
+                        <strong>${info.name} (${score.toFixed(1)}/10)</strong>
+                        <div style="margin-top: 8px; color: #666;">${actions}</div>
+                    </div>
+                `;
+            });
+            
+            planHTML += '</div>';
+            actionPlan.innerHTML = planHTML;
+        }
+        
+        function getDetailedActions(pillar, priority) {
+            const actions = {
+                physical: {
+                    high: 'Start with 10 minutes of daily walking. Add one vegetable to each meal. Set consistent sleep/wake times. Drink 8 glasses of water daily.',
+                    medium: 'Increase physical activity to 30 minutes daily. Plan balanced meals. Improve sleep quality. Schedule health check-up.'
+                },
+                spiritual: {
+                    high: 'Write down 3 core values. Start 5-minute daily gratitude practice. Find one way to serve others weekly. Reflect on life purpose.',
+                    medium: 'Deepen daily practices. Align more decisions with values. Expand service to others. Join purposeful community.'
+                },
+                mental: {
+                    high: 'Practice 5 minutes focused breathing daily. Limit multitasking. Learn one new thing weekly. Challenge negative thoughts.',
+                    medium: 'Develop problem-solving strategies. Enhance learning techniques. Practice mindfulness. Seek intellectual challenges.'
+                },
+                emotional: {
+                    high: 'Name emotions as they arise. Practice pause before reacting. Keep feelings journal. Learn healthy coping strategies.',
+                    medium: 'Deepen emotional awareness. Develop emotional regulation skills. Practice empathy. Express feelings constructively.'
+                },
+                relational: {
+                    high: 'Reach out to one person daily. Practice active listening. Set healthy boundaries. Express gratitude to others.',
+                    medium: 'Deepen existing relationships. Expand social circle. Improve communication skills. Balance giving and receiving.'
+                },
+                vocational: {
+                    high: 'Identify top 3 strengths. Dedicate 30 minutes daily to skill development. Clarify work purpose. Seek meaningful tasks.',
+                    medium: 'Align work with values. Pursue professional growth. Seek feedback. Take on meaningful challenges.'
+                },
+                environmental: {
+                    high: 'Declutter 15 minutes daily. Create morning space routine. Organize one area completely. Make bed every morning.',
+                    medium: 'Maintain organization systems. Enhance space aesthetics. Create functional zones. Regular deep cleaning.'
+                },
+                financial: {
+                    high: 'Track all expenses for one week. Create simple budget. Identify one waste to eliminate. Set financial goals.',
+                    medium: 'Build emergency fund. Optimize spending. Invest in growth. Plan for future needs.'
+                },
+                recreational: {
+                    high: 'Schedule weekly fun time. Try one new activity monthly. Allow guilt-free relaxation. Reconnect with childhood joy.',
+                    medium: 'Expand hobbies. Plan adventures. Balance stimulation with relaxation. Share joy with others.'
+                }
+            };
+            
+            return actions[pillar][priority] || 'Focus on gradual improvement in this area.';
+        }
+    </script>
+</body>
+</html>
